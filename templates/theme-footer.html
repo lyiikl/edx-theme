@@ -1,0 +1,56 @@
+## mako
+<%! from django.core.urlresolvers import reverse %>
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='/static_content.html'/>
+<%! from datetime import datetime %>
+<%! from pytz import UTC %>
+
+<div class="wrapper wrapper-footer">
+  <footer id="footer-openedx">
+    <div class="colophon">
+       <nav class="nav-colophon">
+         <ol>
+             <li class="nav-colophon-00">
+                <a id="education" target="_blank" href="#">${_(u'Lorem Ipsum')}</a>
+             </li>
+             <li class="nav-colophon-01">
+                <a id="office" target="_blank" href="#">${_(u'Lorem Ipsum')}</a>
+             </li>
+             <li class="nav-colophon-02">
+                <a id="products" target="_blank" href="#">${_(u'Lorem Ipsum')}</a>
+             </li>
+              <li><a href="#">${_(u'Lorem Ipsum')}</a></li>
+##           <li><a href="${reverse('privacy')}">Privacy Policy</a></li>
+         </ol>
+       </nav>
+
+    </div>
+    <div class="references" style="margin:0;">
+
+      <a href="https://www.edx.org/" target="_blank">
+
+        <span class="raccoongang">
+
+    	  Built on <img src="${static.url('themes/default/images/your_logo_edx.svg')}" />
+        </span>
+      </a>
+      <a href="https://raccoongang.com/" target="_blank">
+
+        <span class="raccoongang">
+
+    	   by Raccoon Gang
+          <img src="${static.url('themes/default/images/raccoon_logo.svg')}" />
+        </span>
+      </a>
+##       <a href="http://courses.zsmu.edu.ua" class="no-underscore">
+##         <img src="/static/themes/default/images/Univer.png" alt="" height="50">
+##       </a>
+##       <p class="copyright" style="margin-top:5px;">
+## ##         <span style="color:#53abfd;">2016 All rights reserved BrainBasket Foundation </span><br>
+## ##         <a href="mailto:bbf@brainbasket.org">bbf@brainbasket.org</a>
+##       </p>
+    </div>
+
+  </footer>
+</div>
+
