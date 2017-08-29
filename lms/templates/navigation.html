@@ -141,6 +141,14 @@ site_status_msg = get_site_status_msg(course_id)
         </ol>
       % endif
     % else:
+    <ol class="left list-inline nav-global">
+      <li class="item nav-global-05">
+        <a class="btn" href="/courses">${_("Explore Courses")}</a>
+      </li>
+      <li class="item nav-global-05">
+        <a class="btn" href="https://youngthinker.org/" target="_blank">${_('Back to Dashboard')}</a>
+      </li>
+    </ol>
       <ol class="left list-inline nav-global">
         <%block name="navigation_global_links">
           % if static.get_value('ENABLE_MKTG_SITE', settings.FEATURES.get('ENABLE_MKTG_SITE', False)):
