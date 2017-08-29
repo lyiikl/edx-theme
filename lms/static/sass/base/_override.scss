@@ -225,6 +225,7 @@ body .container.activation h1.valid {
     }
 }
 // links
+body .discussion.inline-discussion .inline-thread .forum-nav-bar .all-posts-btn,
 body .setup-value a,
 body .xmodule_display.xmodule_VideoModule .video .subtitles a,
 .u-field-message-notification a,
@@ -306,6 +307,8 @@ body .forum-nav-thread.never-read .forum-nav-thread-link,
 body .discussion .post-label.post-label-following {
     color: $theme-link;
 }
+body .forum-new-post-form .post-type-input:checked+.post-type-label,
+body .edit-post-form .post-type-input:checked+.post-type-label,
 .courses-container .courses .course .course-image .cover-image:before {
     background: $theme-link;
 }
@@ -407,6 +410,8 @@ body .courseware-bookmarks-button .bookmarks-list-button.is-active {
         border-color: $theme-btn-white-border;
     }
 }
+body .forum-new-post-form .post-type-input:checked+.post-type-label,
+body .edit-post-form .post-type-input:checked+.post-type-label,
 body .empty-dashboard-message a,
 body .instructor-dashboard-wrapper-2 .customBrowseBtn .file-browse .browse,
 body .btn-blue,
@@ -831,4 +836,7 @@ body .is-active.btn {
 }
 .view-profile .profile-image-field .image-wrapper .u-field-remove-button {
     color: #767676;
+}
+body .instructor-dashboard-wrapper-2 section.idash-section#send_email .list-fields .field .email-targets-secondary {
+    columns: 1;
 }
