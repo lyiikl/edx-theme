@@ -1,3 +1,6 @@
+.my-hide {
+    display: none!important;
+}
 .header-global {
     height: auto;
     background: $header-color;
@@ -451,6 +454,7 @@ body input[type="submit"]:focus:not(:disabled) {
     box-shadow: none;
     border-color: $theme-btn-bg;
 }
+body .instructor-dashboard-wrapper-2 section.idash-section#cohort_management .cohort-management .message .action-create,
 input[type="submit"], input[type="button"], button, .button,
 .course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.register {
     background: $theme-btn-bg;
@@ -465,6 +469,17 @@ input[type="submit"], input[type="button"], button, .button,
         box-shadow: none;
     }
     &:hover {
+        background: $theme-btn-bg-hover;
+    }
+}
+body .instructor-dashboard-wrapper-2 section.idash-section#cohort_management .cohort-management .message .action-create {
+    color: #fff;
+    border-color: $theme-btn-bg;
+    &:hover:not(:disabled),
+    &:active:not(:disabled),
+    &:focus:not(:disabled) {
+        box-shadow: none;
+        border-color: $theme-btn-bg-hover;
         background: $theme-btn-bg-hover;
     }
 }
@@ -771,4 +786,46 @@ body .xmodule_display.xmodule_SequenceModule .sequence-nav ol li button .fa-book
             color: $theme-btn-bg;
         }
     }
+}
+.header-global .wrapper-header .list-inline .item {
+    display: flex;
+}
+.header-global .wrapper-header .list-inline .item,
+li.item.nav-global-01.nav-global-01-xseries-style {
+    flex-direction: column;
+    a {
+        margin-bottom: 5px;
+    }
+}
+body .header-global .nav-global {
+    margin-top: 0;
+}
+html body.discussion .window-wrap .content-wrapper .btn {
+    &:focus:hover {
+        color: #fff!important;
+    }
+}
+@media (max-width: 759px) {
+    .doc-link {
+        width: auto;
+    }
+    .header-global .user {
+        display: block;
+        width: auto;
+    }
+    .flex {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+        justify-content: center;
+    }
+}
+body .btn:active,
+body .is-pressed.btn,
+body .is-active.btn {
+    color: #fff;
+    background: $theme-btn-bg;
+}
+.btn.dismiss:focus:hover{
+    color: #fff !important;
 }

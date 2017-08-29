@@ -171,3 +171,29 @@
 .discussion .action-button.action-vote:focus {
     background: transparent;
 }
+@media (max-width: 759px) {
+    .doc-link {
+        width: auto;
+    }
+    body .header-global .wrapper-header .wrapper-user-menu,
+    .header-global .user {
+        display: block;
+        width: auto;
+    }
+    .flex {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+body .btn:active,
+body .is-pressed.btn,
+body .is-active.btn {
+    color: #fff;
+    background: $theme-btn-bg;
+}
+.btn.dismiss:focus:hover{
+    color: #fff !important;
+}
