@@ -840,3 +840,9 @@ body .is-active.btn {
 body .instructor-dashboard-wrapper-2 section.idash-section#send_email .list-fields .field .email-targets-secondary {
     columns: 1;
 }
+body .header-global .wrapper-header .list-inline .item a,
+body li.item.nav-global-01.nav-global-01-xseries-style a {
+    &:active {
+        background: transparent;
+    }
+}
