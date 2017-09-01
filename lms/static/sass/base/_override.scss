@@ -874,12 +874,14 @@ body .login-register {
     max-width: 680px;
     box-shadow: 0 0 15px 0 rgba(50, 50, 50, 0.2);
     padding: 0;
+    border-radius: 10px;
 }
 .login-register .form-wrapper {
-    background: #fff;
+    background: #fafafc;
     padding-top: 90px;
     margin-top: 60px;
     padding-bottom: 50px;
+    border-radius: 10px;
 }
 .login-register .login-provider {
     max-width: 300px;
@@ -910,4 +912,7 @@ body .login-register {
         -moz-osx-font-smoothing: grayscale;
         content: "\f090";
     }
+}
+.login-page {
+    background: #eee;
 }
