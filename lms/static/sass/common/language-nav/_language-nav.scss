@@ -1,0 +1,28 @@
+.language-nav {
+    width: 100%;
+    justify-content: center;
+    margin: 10px 0;
+    display: flex;
+    @media screen and (min-width: 760px) {
+        float: right;
+        width: auto;
+        margin: 12px 0 0 10px;
+    }
+
+    &_item {
+        margin: 0 3px;
+        @media screen and (min-width: 760px) {
+            margin: 0 0 0 5px;
+        }
+    }
+    &_link {
+        font-size: 12px;
+        color: #5e5e5e !important;
+        font-weight: bold;
+
+        &__active,
+        &:hover {
+            color: $header-nav-link-color-hover !important;
+        }
+    }
+}
