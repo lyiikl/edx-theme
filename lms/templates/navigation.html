@@ -100,7 +100,7 @@ site_status_msg = get_site_status_msg(course_id)
             % if settings.FEATURES.get('COURSES_ARE_BROWSABLE') and not show_program_listing:
               <li class="item nav-global-01">
                 <a href="${marketing_link('COURSES')}">${_('Explore courses')}</a>
-                <a href="https://youngthinker.org/" target="_blank">${_('Back to Dashboard')}</a>
+                <a href="https://youngthinker.org/" target="_blank">${_('Back to YTP Home')}</a>
               </li>
             % endif
             % if show_program_listing:
@@ -145,7 +145,7 @@ site_status_msg = get_site_status_msg(course_id)
         <a class="btn" href="/courses">${_("Explore Courses")}</a>
       </li>
       <li class="item nav-global-05">
-        <a class="btn" href="https://youngthinker.org/" target="_blank">${_('Back to Dashboard')}</a>
+        <a class="btn" href="https://youngthinker.org/" target="_blank">${_('Back to YTP Home')}</a>
       </li>
     </ol>
       <ol class="left list-inline nav-global">
@@ -172,7 +172,7 @@ site_status_msg = get_site_status_msg(course_id)
                 <a class="btn" href="/courses">${_("Explore Courses")}</a>
               </li>
               <li class="item nav-global-05">
-                <a class="btn" href="https://youngthinker.org/" target="_blank">${_('Back to Dashboard')}</a>
+                <a class="btn" href="https://youngthinker.org/" target="_blank">${_('Back to YTP Home')}</a>
               </li>
             %endif
           % endif
