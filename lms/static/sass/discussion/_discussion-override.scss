@@ -197,3 +197,6 @@ body .is-active.btn {
 .btn.dismiss:focus:hover{
     color: #fff !important;
 }
+body .wrapper-course-material .course-tabs li a[href$="info"] {
+    display: none;
+}

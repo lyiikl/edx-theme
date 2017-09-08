@@ -22,9 +22,11 @@
             width: 100%;
             text-align: center;
             text-transform: none;
+            margin-right: 0;
             @media screen and (min-width:760px ) {
                 width: auto;
                 text-align: left;
+                margin-right: 21px;
             }
 
             a {
@@ -915,4 +917,7 @@ body .login-register {
 }
 .login-page {
     background: #eee;
+}
+body .wrapper-course-material .course-tabs li a[href$="info"] {
+    display: none;
 }

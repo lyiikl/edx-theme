@@ -7,6 +7,11 @@
         float: right;
         width: auto;
         margin: 12px 0 0 10px;
+
+        .rtl & {
+            float: left;
+            margin: 12px 10px 0 0;
+        }
     }
 
     &_item {
