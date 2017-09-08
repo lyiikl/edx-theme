@@ -921,3 +921,7 @@ body .login-register {
 body .wrapper-course-material .course-tabs li a[href$="info"] {
     display: none;
 }
+.lang_ar .btn-en,
+.lang_en .btn-ar {
+    display: none!important;
+}
