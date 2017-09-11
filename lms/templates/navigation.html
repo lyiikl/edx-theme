@@ -84,8 +84,8 @@ site_status_msg = get_site_status_msg(course_id)
           % if settings.FEATURES.get('COURSES_ARE_BROWSABLE_AND_SHOW_PROGRAM_LISTING_NAVIGATE') and context.get('threads') == None:
               <li class="item nav-global-01 nav-global-01-xseries-style">
                 <a class="${'active ' if marketing_link('COURSES') == request.path else ''}tab-nav-link" href="${marketing_link('COURSES')}">${_('Explore courses')}</a>
-                <a class="tab-nav-link btn-en" href="https://youngthinker.org/en/dashboard" target="_blank">Back to YTP Home</a>
-                <a class="tab-nav-link btn-ar" href="https://youngthinker.org/ar/dashboard" target="_blank">Back to YTP Home</a>
+                <a class="tab-nav-link btn-en" href="https://youngthinker.org/en/dashboard" target="_blank">${_('Back to YTP Home')}</a>
+                <a class="tab-nav-link btn-ar" href="https://youngthinker.org/ar/dashboard" target="_blank">${_('Back to YTP Home')}</a>
               </li>
               <li class="tab-nav-item">
                 <a class="${'active ' if reverse('dashboard') == request.path else ''}tab-nav-link" href="${reverse('dashboard')}">
@@ -101,8 +101,8 @@ site_status_msg = get_site_status_msg(course_id)
             % if settings.FEATURES.get('COURSES_ARE_BROWSABLE') and not show_program_listing:
               <li class="item nav-global-01">
                 <a href="${marketing_link('COURSES')}">${_('Explore courses')}</a>
-                <a class="btn-en" href="https://youngthinker.org/en/dashboard" target="_blank">Back to YTP Home</a>
-                <a class="btn-ar" href="https://youngthinker.org/ar/dashboard" target="_blank">Back to YTP Home</a>
+                <a class="btn-en" href="https://youngthinker.org/en/dashboard" target="_blank">${_('Back to YTP Home')}</a>
+                <a class="btn-ar" href="https://youngthinker.org/ar/dashboard" target="_blank">${_('Back to YTP Home')}</a>
               </li>
             % endif
             % if show_program_listing:
@@ -147,8 +147,8 @@ site_status_msg = get_site_status_msg(course_id)
         <a class="btn" href="/courses">${_("Explore Courses")}</a>
       </li>
       <li class="item nav-global-05">
-        <a class="btn btn-en" href="https://youngthinker.org/en/dashboard" target="_blank">Back to YTP Home</a>
-        <a class="btn btn-ar" href="https://youngthinker.org/ar/dashboard" target="_blank">Back to YTP Home</a>
+        <a class="btn btn-en" href="https://youngthinker.org/en/dashboard" target="_blank">${_('Back to YTP Home')}</a>
+        <a class="btn btn-ar" href="https://youngthinker.org/ar/dashboard" target="_blank">${_('Back to YTP Home')}</a>
       </li>
     </ol>
       <ol class="left list-inline nav-global">
@@ -175,8 +175,8 @@ site_status_msg = get_site_status_msg(course_id)
                 <a class="btn" href="/courses">${_("Explore Courses")}</a>
               </li>
               <li class="item nav-global-05">
-                <a class="btn btn-en" href="https://youngthinker.org/en/dashboard" target="_blank">Back to YTP Home</a>
-                <a class="btn btn-ar" href="https://youngthinker.org/ar/dashboard" target="_blank">Back to YTP Home</a>
+                <a class="btn btn-en" href="https://youngthinker.org/en/dashboard" target="_blank">${_('Back to YTP Home')}</a>
+                <a class="btn btn-ar" href="https://youngthinker.org/ar/dashboard" target="_blank">${_('Back to YTP Home')}</a>
               </li>
             %endif
           % endif
