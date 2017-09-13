@@ -50,18 +50,11 @@ site_status_msg = get_site_status_msg(course_id)
   <header id="global-navigation" class="header-global" >
     <nav class="wrapper-header" aria-label="${_('Global')}">
     <h1 class="logo">
-      <a href="${marketing_link('ROOT')}">
-        <%block name="navigation_logo">
-        <%
-        logo_url = get_enterprise_customer_logo_url(request)
-        logo_size = 'ec-logo-size'
-        if logo_url is None:
-            logo_url = branding_api.get_logo_url(is_secure)
-            logo_size = ''
-        %>
-            <img class="${logo_size}logo-en" src="/static/${settings.DEFAULT_SITE_THEME}/images/logo.png" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
-            <img class="${logo_size}logo-ar" src="/static/${settings.DEFAULT_SITE_THEME}/images/logo-ar.png" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
-        </%block>
+      <a class="link-logo-en" href="https://youngthinker.org/en/dashboard">
+            <img class="logo-en" src="/static/${settings.DEFAULT_SITE_THEME}/images/logo.png" alt=""/>
+      </a>
+      <a class="link-logo-ar" href="https://youngthinker.org/ar/dashboard">
+            <img class="logo-ar" src="/static/${settings.DEFAULT_SITE_THEME}/images/logo-ar.png" alt=""/>
       </a>
     </h1>
 
