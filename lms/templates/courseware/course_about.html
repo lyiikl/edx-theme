@@ -271,7 +271,7 @@ import re
           % if (course_about_section_effort):
           <% 
 
-               get_course_about_section_format = datetime.strptime(get_course_about_section(request, course, "effort").replace("\n", ""),'%H:%M').time()
+               get_course_about_section_format = get_course_about_section(request, course, "effort").replace("\n", "")
                get_course_about_section_h, get_course_about_section_m, get_course_about_section_s = str(get_course_about_section_format).split(':')
                estimate_effort_time = _("{num_hour} hour {num_minute} minute").format(num_hour=get_course_about_section_h, num_minute=get_course_about_section_m)
 
