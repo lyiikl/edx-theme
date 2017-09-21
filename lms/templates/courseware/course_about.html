@@ -272,8 +272,11 @@ import re
           <% 
 
                get_course_about_section_format = get_course_about_section(request, course, "effort").replace("\n", "")
-               get_course_about_section_h, get_course_about_section_m, get_course_about_section_s = str(get_course_about_section_format).split(':')
-               estimate_effort_time = _("{num_hour} hour {num_minute} minute").format(num_hour=get_course_about_section_h, num_minute=get_course_about_section_m)
+               if re.compile(r':').search(get_course_about_section_format):
+                   get_course_about_section_h, get_course_about_section_m = str(get_course_about_section_format).split(':')
+                   estimate_effort_time = _("{num_hour} hour {num_minute} minute").format(num_hour=get_course_about_section_h, num_minute=get_course_about_section_m)
+               else:
+                   estimate_effort_time = get_course_about_section_format
 
           %>
             <li class="important-dates-item"><span class="icon fa fa-pencil" aria-hidden="true"></span><p class="important-dates-item-title">${_("Estimated Effort")}</p><span class="important-dates-item-text effort">${estimate_effort_time}</span></li>
