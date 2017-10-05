@@ -200,3 +200,14 @@ body .is-active.btn {
 body .wrapper-course-material .course-tabs li a[href$="info"] {
     display: none;
 }
+body .dropdown-menu-container .menu-title {
+    display: flex;
+    align-items: center;
+
+}
+div.wrapper-user-menu.dropdown-menu-container.logged-in.js-header-user-menu {
+    display: flex;
+}
+.flex .dropdown-menu-container .menu-button {
+    margin-top: 4px;
+}
