@@ -1145,3 +1145,6 @@ body .home .page-header-main {
 body section.wiki .wiki-wrapper>header {
     width: 100%;
 }
+iframe, button, input, select, textarea, form#wiki_revision .CodeMirror {
+    max-width: 100%;
+}
