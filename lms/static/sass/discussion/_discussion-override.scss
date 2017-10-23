@@ -211,3 +211,15 @@ div.wrapper-user-menu.dropdown-menu-container.logged-in.js-header-user-menu {
 .flex .dropdown-menu-container .menu-button {
     margin-top: 4px;
 }
+aside.layout-col {
+    margin-bottom: 80px;
+    @media screen and (min-width: 768px) {
+        margin-bottom: 0;
+    }
+}
+.view-discussion-home {
+    padding-left: 0;
+    @media screen and (min-width: 768px) {
+        padding-left: 20px;
+    }
+}
