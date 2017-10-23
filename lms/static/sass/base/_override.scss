@@ -1148,3 +1148,9 @@ body section.wiki .wiki-wrapper>header {
 iframe, button, input, select, textarea, form#wiki_revision .CodeMirror {
     max-width: 100%;
 }
+.course-wrapper .course-content .xblock,
+.course-wrapper .courseware-results-wrapper .xblock {
+    overflow-wrap: initial;
+    word-wrap: initial;
+    word-break: initial;
+}
