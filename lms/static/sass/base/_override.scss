@@ -469,6 +469,7 @@ input[type="submit"], input[type="button"], button, .button,
     color: $theme-btn-text-color;
     text-shadow: none;
     border-radius: 2px;
+    margin: 0 auto;
     
     &:active,
     &:focus {
@@ -1153,4 +1154,72 @@ iframe, button, input, select, textarea, form#wiki_revision .CodeMirror {
     overflow-wrap: initial;
     word-wrap: initial;
     word-break: initial;
+}
+.course-info {
+    .container {
+        display: flex;
+        min-width: auto;
+        flex-wrap: wrap;
+
+        @media screen and (min-width: 760px) {
+            padding: 40px 10px;
+        }
+        @media screen and (min-width: 1200px) {
+            padding: 40px 0;
+            flex-wrap: nowrap;
+        }
+    }
+    .details {
+        padding: 40px 10px;
+        width: 100%;
+        order: 2;
+        @media screen and (min-width: 1200px) {
+            padding: 40px 0;
+            order: 1;
+        }
+    }
+    .course-sidebar {
+        width: 100%;
+        order: 1;
+        @media screen and (min-width: 1200px) {
+            order: 2;
+            width: 65.88078%;
+        }
+
+        .course-summary {
+            width: 100%;
+        }
+    }
+}
+.course-info header.course-profile .intro-inner-wrapper {
+    min-width: auto;
+
+    &:after {
+        display: none;
+    }
+    &>div.table {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        @media screen and (min-width: 760px) {
+            // width: 68.23843%;
+            flex-wrap: nowrap;
+        }
+    }
+    .intro {
+        width: 100%;
+        order: 2;
+        @media screen and (min-width: 760px) {
+            width: 68.23843%;
+            order: 1;
+        }
+    }
+    .media {
+        width: 100%;
+        order: 1;
+        @media screen and (min-width: 760px) {
+            width: 31.76157%;
+            order: 2;
+        }
+    }
 }
