@@ -1,6 +1,4 @@
-<%! from django.utils.translation import ugettext as _ 
-import re
-%>
+<%! from django.utils.translation import ugettext as _ %>
 <%namespace name='static' file='../static_content.html'/>
 <%
 course_mode_class = course_mode if course_mode else ''
@@ -19,7 +17,8 @@ course_mode_class = course_mode if course_mode else ''
                 <span class="accomplishment-type-symbol">
                     <img class="src" src="/static/certificates/images/ico-${course_mode_class}.png" alt="">
                 </span>
-                <span class="accomplishment-type-label hd-4">${re.sub(r"YTP_{0,1}Arabic", "ﺏﺮﻧﺎﻤﺟ ﺎﻠﻤﻔﻛﺮﻴﻧ ﺎﻠﻳﺎﻔﻌﻴﻨﻋﺮﺒﻳ", document_title)}</span>
+
+                <span class="accomplishment-type-label hd-4">${document_title}</span>
             </div>
 
             <div class="wrapper-statement-and-signatories">
@@ -27,14 +26,15 @@ course_mode_class = course_mode if course_mode else ''
                     <p class="accomplishment-statement-lead">
                         <strong class="accomplishment-recipient hd-1 emphasized">${accomplishment_copy_name | h}</strong>
                         <span class="accomplishment-summary copy copy-lead">${accomplishment_copy_description_full}</span>
+
                         <span class="accomplishment-course hd-1 emphasized">
-                            <span class="accomplishment-course-org">${re.sub(r"YTP_{0,1}Arabic", "ﺏﺮﻧﺎﻤﺟ ﺎﻠﻤﻔﻛﺮﻴﻧ ﺎﻠﻳﺎﻔﻌﻴﻨﻋﺮﺒﻳ", accomplishment_copy_course_org)}  </span>
+                            <span class="accomplishment-course-org">${accomplishment_copy_course_org}  </span>
                             <span class="accomplishment-course-number">${course_number}</span>:
                             <span class="accomplishment-course-name">${accomplishment_copy_course_name}</span>
                         </span>
                     </p>
 
-                    <p class="accomplishment-statement-detail copy copy-lead">${re.sub(r"YTP_{0,1}Arabic", "ﺏﺮﻧﺎﻤﺟ ﺎﻠﻤﻔﻛﺮﻴﻧ ﺎﻠﻳﺎﻔﻌﻴﻨﻋﺮﺒﻳ", accomplishment_copy_course_description)}</p>
+                    <p class="accomplishment-statement-detail copy copy-lead">${accomplishment_copy_course_description}</p>
                 </div>
 
                 % if mode != 'base':
