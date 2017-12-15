@@ -5,8 +5,8 @@
   from django.utils.translation import ugettext as _
   from branding.api import get_footer
 %>
-<% footer = get_footer(is_secure=is_secure) %>
-<%namespace name='static' file='static_content.html'/>
+  <% footer = get_footer(is_secure=is_secure) %>
+    <%namespace name='static' file='static_content.html'/>
 
 <div class="wrapper wrapper-footer">
   <footer id="footer-openedx" class="grid-container"
@@ -18,6 +18,19 @@
     % endif
   >
     <div class="colophon">
+      <nav class="nav-colophon" aria-label="${_('About')}">
+        <ol>
+            <li class="nav-colophon-01">
+              <a href="/about">${_("Code of Conduct")}</a>
+            </li>
+            <li class="nav-colophon-02">
+              <a href="/privacy">${_("Privacy Policy")}</a>
+            </li>
+            <li class="nav-colophon-03">
+              <a href="/tos">${_("Terms of Service")}</a>
+            </li>
+        </ol>
+      </nav>
       <ul class="icon-list">
         <li class="icon-list_item"><a href=" https://www.facebook.com/alghurairfoundation" target="_blank" class="icon-list_link icon-list_link__facebook">facebook</a></li>
         <li class="icon-list_item"><a href="https://www.instagram.com/alghurairfoundation/" target="_blank" class="icon-list_link icon-list_link__instagramm">instagramm</a></li>
