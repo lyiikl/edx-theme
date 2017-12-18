@@ -1800,4 +1800,12 @@ body {
     .icon-list_link {
         background-repeat: no-repeat;
     }
+    #content > h2 {
+        margin: 0 auto;
+        max-width: 1180px;
+        text-align: center;
+    }
+    .wrapper-header .course-header {
+        display: none !important; 
+    }
 }
