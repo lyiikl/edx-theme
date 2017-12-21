@@ -754,7 +754,8 @@ body .wmd-prompt-dialog .btn-brand:focus {
     position: absolute;
     top: -50px;
     left: 50%;
-    margin-left: -35px;
+    margin: 0;
+    transform: translate(-50%,0);
 }
 
 .link-logo-ar,
@@ -1834,4 +1835,10 @@ body.rtl .wrapper-footer footer#footer-openedx .colophon .nav-colophon li a {
     font-size: 11px;
     padding: 6px;
     text-transform: uppercase;
+}
+.footer-link {
+    padding: 6px;
+}
+.wrapper-footer footer#footer-openedx .colophon .nav-colophon li {
+    margin: 0;
 }
