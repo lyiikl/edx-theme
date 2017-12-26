@@ -1842,3 +1842,30 @@ body.rtl .wrapper-footer footer#footer-openedx .colophon .nav-colophon li a {
 .wrapper-footer footer#footer-openedx .colophon .nav-colophon li {
     margin: 0;
 }
+body .course-name {
+    padding: 10px 30px;
+    background: $theme-btn-bg;
+    position: relative;
+    color: #fff;
+    &::before,&::after {
+        content: '';
+        width: 80px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: -80px;
+        background: linear-gradient(to right, $theme-btn-bg 0%,#eee 100%);
+    }
+    &:after {
+        left: auto;
+        right: -80px;
+
+    }
+    &:before {
+        transform: rotate(180deg);
+    }
+}
+body #content>h2 {
+    display: flex;
+    justify-content: center;
+}
