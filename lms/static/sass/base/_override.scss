@@ -1869,3 +1869,6 @@ body #content>h2 {
     display: flex;
     justify-content: center;
 }
+body .header-global .user .user-link .label-username {
+    color: $theme-link;
+}
