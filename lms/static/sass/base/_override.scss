@@ -1764,8 +1764,8 @@ section.wiki .table.table-striped {
 }
 
 @font-face {
-    font-family: 'Harmattan';
-    src: url("../fonts/Harmattan-Regular.woff2") format("woff2"), url("../fonts/Harmattan-Regular.woff") format("woff");
+    font-family: 'DINNextLTArabic';
+    src: url("../fonts/DINNextLTArabic-Medium.woff2") format("woff2"), url("../fonts/DINNextLTArabic-Medium.woff") format("woff");
     font-weight: normal;
     font-style: normal;
 }
@@ -1830,7 +1830,7 @@ body {
     }
 }
 body.rtl .wrapper-footer footer#footer-openedx .colophon .nav-colophon li a {
-    font-family: 'Harmattan';
+    font-family: 'DINNextLTArabic';
     color: white;
     font-size: 11px;
     padding: 6px;
