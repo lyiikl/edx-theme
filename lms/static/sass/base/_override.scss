@@ -1878,3 +1878,11 @@ body .header-global .user .user-link .label-username {
 body .wrapper-footer footer#footer-openedx .colophon .nav-colophon li:last-child {
     margin: 0;
 }
+body .login-register .login-provider {
+    width: 215px;
+}
+
+.login-register .login-provider .login-icon {
+    position: static;
+    padding-left: 30px;
+}
