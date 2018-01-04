@@ -1880,9 +1880,12 @@ body .wrapper-footer footer#footer-openedx .colophon .nav-colophon li:last-child
 }
 body .login-register .login-provider {
     width: 215px;
+    padding: 0;
 }
 
 .login-register .login-provider .login-icon {
     position: static;
-    padding-left: 30px;
+    &::after {
+        display: none;
+    }
 }
