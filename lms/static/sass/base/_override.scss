@@ -1889,3 +1889,10 @@ body .login-register .login-provider {
         display: none;
     }
 }
+
+.rtl .header-global .nav-global li {
+    margin-right: 0;
+    a {
+        text-align: right;
+    }
+}
