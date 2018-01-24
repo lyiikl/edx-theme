@@ -966,6 +966,9 @@ body li.item.nav-global-01.nav-global-01-xseries-style a {
         background: transparent;
     }
 }
+body .header-global .wrapper-header .list-inline .item a.btn.btn-login {
+    display: none;
+}
 
 .login-register .login-provider .icon,
 .login-register .section-title.lines:after,
