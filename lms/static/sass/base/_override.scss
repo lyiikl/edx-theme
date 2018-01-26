@@ -191,35 +191,42 @@ body {
         background: #ffc627;
         border-color: #ffc627;
         text-shadow: none;
-        color: #fff;
-
+        color: #000;
+        box-shadow: none;
         &:hover {
-            background: lighten(#ffc627, 20%);
-            color: #fff;
+            background: lighten(#ffc627, 20%) !important;
+            color: #000;
         }
     }
 
     .dashboard .my-courses .course .wrapper-messages-primary .message.message-upsell .action-upgrade, .verification-process .action-primary, .verification-process .action-confirm, .verification-process .carousel .wrapper-task .controls .control.approved .action, .verification-process.step-select-track .register-choice-certificate .action-select input, .wrapper-msg .has-actions .nav-actions .action-primary, .wrapper-msg .has-actions .msg-actions .action-primary {
-        background: #78be20;
-        border-color: #78be20;
+        background: #ffc627;
+        border-color: #ffc627;
         text-shadow: none;
-        color: #fff;
+        color: #000;
+        box-shadow: none;
 
         &:hover,
         &:focus {
-            background: lighten(#78be20, 20%);
+            background: lighten(#ffc627, 20%) !important;
+            color: #000;
+            box-shadow: none;
+        }
+    }
+    .carousel #wrapper-review .review-task-photos .wrapper-photos .help-tips .title {
+        color: #fff !important;
+        &:hover,&:focus {
             color: #fff;
             box-shadow: none;
         }
     }
-
     .course-info header.course-profile .intro-inner-wrapper .intro .main-cta strong:hover:not(:disabled) {
         background: lighten(#00A3E0, 20%);
     }
 
     input[type="submit"]:hover:not(:disabled), input[type="button"]:hover:not(:disabled), button:hover:not(:disabled), .button:hover:not(:disabled) {
-        background: lighten(#00A3E0, 20%);
-        border-color: lighten(#00A3E0, 20%);
+        background: lighten(#FFC627, 20%);
+        border-color: lighten(#FFC627, 20%);
     }
 
     .dashboard .my-courses .course .details .enter-course {
@@ -342,8 +349,33 @@ body {
     .user-image-frame {
         max-width: 30px;
     }
+    .wrapper-preview-menu {
+        width: 100%;
+    }
+    .dropdown-menu-container .menu-button .icon {
+        color: #b8b8b8;
+    }
+    .dropdown-menu-container .menu-title {
+        color: #b8b8b8;
+    }
 }
+.dashboard .my-courses .course .wrapper-messages-primary .message.message-upsell .action-upgrade, .verification-process .action-primary, .verification-process .action-confirm, .verification-process .carousel .wrapper-task .controls .control.approved .action, .verification-process.step-select-track .register-choice-certificate .action-select input, .wrapper-msg .has-actions .nav-actions .action-primary, .wrapper-msg .has-actions .msg-actions .action-primary {
+    background: #ffc627;
+    border-color: #ffc627;
+    text-shadow: none;
+    color: #000;
+    box-shadow: none;
 
+    &:hover,
+    &:focus {
+        background: lighten(#ffc627, 20%) !important;
+        color: #000;
+        box-shadow: none;
+    }
+}
+body tfoot .course-actions {
+    display: block;
+}
 * * {
     font-family: 'Roboto', sans-serif !important;
 }
@@ -357,14 +389,14 @@ body {
 }
 
 .verification-process .carousel #wrapper-review .review .payment-buttons .payment-button {
-    background: #78be20;
-    border-color: #78be20;
+    background: #ffd153;
+    border-color: #ffd153;
     text-shadow: none;
     color: #fff;
     box-shadow: none;
 
     &:hover {
-        background: lighten(#78be20, 20%);
+        background: lighten(#ffd153, 20%);
         color: #fff;
     }
 }
@@ -396,7 +428,11 @@ body {
 
 .verification-process .carousel .wrapper-task .controls .control .action {
     border-radius: 5px;
-    background: #00A3E0;
+    background: #ffc627;
+    box-shadow: none;
+    &:hover,&:focus {
+        background: lighten(#ffc627, 20%);
+    }
 }
 
 .verification-process .nav-wizard {
@@ -406,16 +442,16 @@ body {
 }
 
 .dashboard .my-courses .course .wrapper-messages-primary .message.message-upsell .action-upgrade, .verification-process .action-primary, .verification-process .action-confirm, .verification-process .carousel .wrapper-task .controls .control.approved .action, .verification-process.step-select-track .register-choice-certificate .action-select input, .wrapper-msg .has-actions .nav-actions .action-primary, .wrapper-msg .has-actions .msg-actions .action-primary {
-    background: #78be20;
-    border-color: #78be20;
+    background: #ffc627;
+    border-color: #ffc627;
     text-shadow: none;
-    color: #fff;
+    color: #000 !important;
     box-shadow: none !important;
 
     &:hover,
     &:focus {
-        background: lighten(#78be20, 20%);
-        color: #fff;
+        background: lighten(#ffc627, 20%) !important;
+        color: #000 !important;
     }
 }
 
