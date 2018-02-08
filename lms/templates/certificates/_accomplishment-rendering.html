@@ -4,37 +4,255 @@
 course_mode_class = course_mode if course_mode else ''
 %>
 
+<style>
+
+    @font-face {
+        font-family: 'Avenir';
+        src: url('/static/fonts/AvenirLTStd-Medium.woff2') format('woff2'),
+        url('/static/fonts/AvenirLTStd-Medium.woff') format('woff');
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Avenir';
+        src: url('/static/fonts/AvenirLTStd-Book.woff2') format('woff2'),
+        url('/static/fonts/AvenirLTStd-Book.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+
+    .certificates {
+        position: relative;
+        width: 100%;
+        padding: 0;
+        border: 0;
+        max-width: 1170px;
+    }
+    .certificates__background {
+        width: 100%;
+        height: auto;
+    }
+    .certificates__title {
+        position: absolute;
+        left: 50%;
+        top: 7%;
+        transform: translate(-51%, 0);
+        -webkit-transform: translate(-51%, 0);
+        color: #8f6c29;
+        font: 80px/80px Avenir;
+        width: 100% !important;
+        height: 23%;
+        margin: 0 !important;
+
+    }
+    .certificates__title span {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
+        top: 33%;
+        font-size: 156.2%;
+    }
+    .certificates__title img {
+        width: 42%;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
+    }
+    .wrapper-statement-and-signatories {
+        top: 26%;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
+    }
+    .certificates__static-text {
+        font-family: Avenir;
+        font-size: 24px;
+    }
+    .certificates__owner-name {
+        font-family: Avenir !important;
+        font-weight: 800;
+        font-size: 60px;
+        margin-top: 5px;
+        margin-bottom: 3px;
+        display: block;
+    }
+    .accomplishment-orgs,
+    .wrapper-accomplishment-metadata{
+        position: absolute;
+    }
+
+    .certificates__course-name {
+        background: #fc6a15;
+        color: #fff;
+        padding: 18px 40px 10px;
+        font-size: 30px;
+        font-weight: 800;
+        font-family: Avenir;
+        text-transform: uppercase;
+        margin-bottom: 25px;
+    }
+    .certificate .accomplishment-rendering .accomplishment-statement {
+        width: 63%;
+        margin: 0 auto 45px;
+        padding: 0;
+    }
+    .signatory {
+        display: flex !important;
+        width: 380px !important;
+    }
+    .signatory-holder {
+        display: block;
+        text-align: left !important;
+    }
+    .list-signatories {
+        width: 53%;
+        margin: 0 auto !important;
+        display: flex !important;
+    }
+    .layout-accomplishment .accomplishment-signatories .signatory .signatory-signature {
+        height: 10rem;
+        max-height: 100%;
+        margin: 0;
+        padding: 1.25rem 0.325rem;
+    }
+    .accomplishment-rendering .accomplishment-signatories .signatory-name {
+        font-size: 22px;
+        font-weight: 800;
+        text-align: left;
+        margin-top: 11px;
+    }
+    .accomplishment-rendering .accomplishment-signatories .signatory-credentials {
+        font-size: 14px;
+        text-align: left;
+    }
+    .issued-on {
+        text-align: left;
+        padding-top: 16px;
+        font-size: 19px;
+    }
+    .accomplishment-rendering .wrapper-statement-and-signatories,
+    .accomplishment-rendering .accomplishment-statement,
+    .accomplishment-rendering .accomplishment-signatories {
+        border: none;
+    }
+    .wrapper-accomplishment-metadata {
+        display: none;
+    }
+    .issued-on__text {
+        margin-bottom: 10px;
+    }
+    .issued-on strong {
+        font-size: 29px;
+    }
+    .accomplishment-rendering .accomplishment-orgs {
+        position: absolute;
+        top: 80%;
+    }
+    .accomplishment-rendering .accomplishment-orgs .organization-logo {
+        max-height: 1000%;
+        max-width: 1000% !important;
+        width: 490px;
+    }
+    @media print {
+        @page {
+            size: landscape;
+            margin: 0;
+            border: 0;
+        }
+        html, body {
+            height: auto;
+            margin: 0 !important;
+        }
+        .certificates {
+            /*width: 20.4cm !important;*/
+            height: 20.9cm !important;
+            margin: 0 !important;
+        }
+        .certificates__title span {
+            top: 30%;
+            font-size: 114.2%;
+        }
+        .certificates__background {
+            width: auto;
+            height: 100%;
+            margin: 0 auto;
+        }
+        .certificates__proove {
+            font: 21px/30px Avenir;
+        }
+        .certificates__owner-name {
+            font: 800 60px/50px Avenir;
+        }
+        .certificates__award-text {
+            font: 17px/24px Avenir;
+            max-height: 141px;
+        }
+        .certificates__stamp-name {
+            font-size: 17px;
+            line-height: 21px;
+        }
+        .certificates__stamp-descr {
+            font-size: 12px;
+            line-height: 15px;
+            max-height: 90px;
+        }
+        .wrapper-accomplishment-rendering {
+            margin: 0 !important;
+        }
+        .certificates__id-date {
+            font-size: 12px;
+        }
+        .certificates__stamp {
+            height: 130px;
+            min-width: 160px;
+            max-width: 200px;
+        }
+        .certificates__stamp-image {
+            height: 130px;
+            width: 130px;
+        }
+        .certificates__stamps {
+            padding: 0 80px;
+        }
+        .certificates__name {
+            max-height: 103px;
+            overflow: hidden;
+            padding: 4px 5px 0;
+        }
+        .certificates__sign-image {
+            max-height: 50px;
+        }
+    }
+</style>
+
+
 <main class="accomplishment accomplishment-main">
 
     <div class="wrapper-accomplishment-rendering">
-        <div class="accomplishment-rendering">
-            <span class="deco-corner deco-corner-tl"></span>
-            <span class="deco-corner deco-corner-tr"></span>
-            <span class="deco-corner deco-corner-bl"></span>
-            <span class="deco-corner deco-corner-br"></span>
+        <div class="accomplishment-rendering certificates">
+            <img src="/static/certificates/images/background.png" class="certificates__background">
 
-            <div class="accomplishment-type">
-                <span class="accomplishment-type-symbol">
-                    <img class="src" src="/static/certificates/images/ico-${course_mode_class}.png" alt="">
-                </span>
+            <div class="accomplishment-type certificates__title">
 
-                <span class="accomplishment-type-label hd-4">${document_title}</span>
+                <img class="src" src="/static/certificates/images/cert-logo.png" alt="">
+
+
+                <!--<span class="accomplishment-type-label hd-4">${document_title}</span>-->
             </div>
 
             <div class="wrapper-statement-and-signatories">
                 <div class="accomplishment-statement">
                     <p class="accomplishment-statement-lead">
-                        <strong class="accomplishment-recipient hd-1 emphasized">${accomplishment_copy_name | h}</strong>
-                        <span class="accomplishment-summary copy copy-lead">${accomplishment_copy_description_full}</span>
-
-                        <span class="accomplishment-course hd-1 emphasized">
-                            <span class="accomplishment-course-org">${accomplishment_copy_course_org}  </span>
-                            <span class="accomplishment-course-number">${course_number}</span>:
-                            <span class="accomplishment-course-name">${accomplishment_copy_course_name}</span>
-                        </span>
+                        <span class="certificates__static-text">${_('This is to certify that')}</span>
+                        <strong class="certificates__owner-name">${accomplishment_copy_name | h}</strong>
+                        <span class="certificates__static-text">${_('Successfully completed')}</span>
+                        <div class="certificates__course-name">${accomplishment_copy_course_name}</div>
                     </p>
-
-                    <p class="accomplishment-statement-detail copy copy-lead">${accomplishment_copy_course_description}</p>
                 </div>
 
                 % if mode != 'base':
@@ -43,19 +261,20 @@ course_mode_class = course_mode if course_mode else ''
 
                     <div class="wrapper-signatories">
                         <div class="list-signatories">
-                            % if certificate_data:
-                                % for signatory in certificate_data.get('signatories', []):
                                 <div class="signatory">
-                                    <img class="signatory-signature" src="${static.url(signatory['signature_image_path'])}" alt="${signatory['name']}">
-
-                                    <h4 class="signatory-name hd-5">${signatory['name']}</h4>
-                                    <p class="signatory-credentials copy copy-micro">
-                                        <span class="role">${signatory['title']}</span>
-                                        <span class="organization">${signatory['organization']}</span>
-                                    </p>
+                                    <img class="signatory-signature" src="/static/certificates/images/signature-01.png" alt="">
+                                    <div class="signatory-holder">
+                                        <h4 class="signatory-name hd-5">Nesma Farahat</h4>
+                                        <div class="signatory-credentials copy copy-micro">
+                                            <div class="role">Program Manager</div>
+                                            <span class="organization">Al Ghurair Young Thinkers Program</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                % endfor
-                            % endif
+                            <div class="issued-on">
+                                <div class="issued-on__text">Issued On</div>
+                                <strong>${certificate_date_issued}</strong>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -68,49 +287,39 @@ course_mode_class = course_mode if course_mode else ''
                 <ul class="wrapper-orgs list-orgs">
                     <li class="wrapper-organization">
                         <div class="organization organization-edX">
-                            <img class="organization-logo" src="/static/${settings.FEATURES.get('DEMO_KTHPLUS_SITE_THEME', settings.DEFAULT_SITE_THEME)}/images/logo.png" alt="${platform_name}">
+                            <img class="organization-logo" src="/static/certificates/images/Agfelofowide-01.png" alt="${platform_name}">
                         </div>
                     </li>
-
-                    % if organization_logo:
-                    <li class="wrapper-organization">
-                        <div class="organization">
-                            <img class="organization-logo" src="${organization_logo.url}" alt="${platform_name}">
-                        </div>
-                    </li>
-                    % endif
                 </ul>
             </div>
-        </div>
-    </div>
+            <div class="wrapper-accomplishment-metadata">
+                <div class="accomplishment-metadata">
+                    <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about | h}</h2>
 
-    <div class="wrapper-accomplishment-metadata">
-        <div class="accomplishment-metadata">
-            <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about | h}</h2>
-
-            <div class="wrapper-metadata">
-                <dl class="metadata accomplishment-recipient">
-                    <dt class="label sr-only">Awarded to:</dt>
-                    <dd class="value copy copy-meta">
+                    <div class="wrapper-metadata">
+                        <dl class="metadata accomplishment-recipient">
+                            <dt class="label sr-only">Awarded to:</dt>
+                            <dd class="value copy copy-meta">
                         <span class="recipient-img">
                             <img class="src" src="/static/certificates/images/demo-user-profile.png" alt="">
                         </span>
-                        <div class="recipient-details">
-                            <h3 class="recipient-name">${accomplishment_copy_name | h}</h3>
-                            <p class="recipient-username">${accomplishment_copy_username} @ ${platform_name}</p>
-                        </div>
-                    </dd>
-                </dl>
-                <dl class="metadata accomplishment-id">
-                    <dt class="label copy copy-meta">${certificate_id_number_title}:</dt>
-                    <dd class="value copy copy-base">${certificate_id_number}</dd>
-                </dl>
-                <dl class="metadata accomplishment-date">
-                    <dt class="label copy copy-meta">${certificate_date_issued_title}</dt>
-                    <dd class="value copy copy-base">${certificate_date_issued}</dd>
-                </dl>
+                                <div class="recipient-details">
+                                    <h3 class="recipient-name">${accomplishment_copy_name | h}</h3>
+                                    <p class="recipient-username">${accomplishment_copy_username} @ ${platform_name}</p>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl class="metadata accomplishment-id">
+                            <dt class="label copy copy-meta">${certificate_id_number_title}:</dt>
+                            <dd class="value copy copy-base">${certificate_id_number}</dd>
+                        </dl>
+                        <dl class="metadata accomplishment-date">
+                            <dt class="label copy copy-meta">${certificate_date_issued_title}</dt>
+                            <dd class="value copy copy-base">${certificate_date_issued}</dd>
+                        </dl>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 </main>
