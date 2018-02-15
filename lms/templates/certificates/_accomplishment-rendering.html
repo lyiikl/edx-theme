@@ -107,7 +107,13 @@ course_mode_class = course_mode if course_mode else ''
     }
     .signatory-holder {
         display: block;
-        text-align: left !important;
+        
+    }
+    body .accomplishment-rendering .accomplishment-signatories .signatory-credentials {
+        text-align: left;
+    }
+    body.rtl .accomplishment-rendering .accomplishment-signatories .signatory-credentials {
+        text-align: right;
     }
     .list-signatories {
         width: 53%;
@@ -126,9 +132,20 @@ course_mode_class = course_mode if course_mode else ''
         text-align: left;
         margin-top: 11px;
     }
+    body.rtl .accomplishment-rendering .accomplishment-signatories .signatory-name {
+        text-align: right;
+    }
+    .logo-ar {
+        display: none;
+    }
+    body.rtl .logo-en {
+        display: none;
+    }
+    body.rtl .logo-ar {
+        display: block;
+    }
     .accomplishment-rendering .accomplishment-signatories .signatory-credentials {
         font-size: 14px;
-        text-align: left;
     }
     .issued-on {
         text-align: left;
@@ -235,12 +252,13 @@ course_mode_class = course_mode if course_mode else ''
 
     <div class="wrapper-accomplishment-rendering">
         <div class="accomplishment-rendering certificates">
-            <img src="/static/certificates/images/background.png" class="certificates__background">
+            <img src="/static/certificates/images/background.png" class="certificates__background logo-en">
+            <img src="/static/certificates/images/BgAssetsArabic-01.png" class="certificates__background logo-ar">
 
             <div class="accomplishment-type certificates__title">
 
-                <img class="src" src="/static/certificates/images/cert-logo.png" alt="">
-
+                <img class="src logo-en" src="/static/certificates/images/cert-logo.png" alt="">
+                <img class="src logo-ar" src="/static/certificates/images/CertificateofAcheivement-01_arabic-01.png" alt="">
 
                 <!--<span class="accomplishment-type-label hd-4">${document_title}</span>-->
             </div>
@@ -287,7 +305,8 @@ course_mode_class = course_mode if course_mode else ''
                 <ul class="wrapper-orgs list-orgs">
                     <li class="wrapper-organization">
                         <div class="organization organization-edX">
-                            <img class="organization-logo" src="/static/certificates/images/Agfelofowide-01.png" alt="${platform_name}">
+                            <img class="organization-logo logo-en" src="/static/certificates/images/Agfelofowide-01.png" alt="${platform_name}">
+                            <img class="organization-logo logo-ar" src="/static/certificates/images/Agfelofowide_arabic-01.png" alt="${platform_name}">
                         </div>
                     </li>
                 </ul>
