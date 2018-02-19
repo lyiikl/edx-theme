@@ -21,7 +21,13 @@ course_mode_class = course_mode if course_mode else ''
         font-weight: normal;
         font-style: normal;
     }
-
+    @font-face {
+        font-family: 'DinArabic';
+        src: url('/static/fonts/DINNextLTArabic-Medium.woff2') format('woff2'),
+        url('/static/fonts/DINNextLTArabic-Medium.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
 
     .certificates {
         position: relative;
@@ -37,7 +43,7 @@ course_mode_class = course_mode if course_mode else ''
     .certificates__title {
         position: absolute;
         left: 50%;
-        top: 7%;
+        top: 6%;
         transform: translate(-51%, 0);
         -webkit-transform: translate(-51%, 0);
         color: #8f6c29;
@@ -46,6 +52,9 @@ course_mode_class = course_mode if course_mode else ''
         height: 23%;
         margin: 0 !important;
 
+    }
+    .rtl .certificates__title {
+        font-family: DinArabic;
     }
     .certificates__title span {
         position: absolute;
@@ -63,7 +72,7 @@ course_mode_class = course_mode if course_mode else ''
         -webkit-transform: translate(-50%, 0);
     }
     .wrapper-statement-and-signatories {
-        top: 26%;
+        top: 25%;
         position: absolute;
         left: 50%;
         transform: translate(-50%, 0);
@@ -71,7 +80,13 @@ course_mode_class = course_mode if course_mode else ''
     }
     .certificates__static-text {
         font-family: Avenir;
-        font-size: 24px;
+        font-size: 22px;
+    }
+    .rtl .certificates__static-text {
+        font-family: DinArabic;
+    }
+    .certificates__static-text--small {
+        font-size: 18px;
     }
     .certificates__owner-name {
         font-family: Avenir !important;
@@ -80,6 +95,9 @@ course_mode_class = course_mode if course_mode else ''
         margin-top: 5px;
         margin-bottom: 3px;
         display: block;
+    }
+    .rtl .certificates__owner-name {
+        font-family: DinArabic !important;
     }
     .accomplishment-orgs,
     .wrapper-accomplishment-metadata{
@@ -94,11 +112,14 @@ course_mode_class = course_mode if course_mode else ''
         font-weight: 800;
         font-family: Avenir;
         text-transform: uppercase;
-        margin-bottom: 25px;
+        margin-bottom: 15px;
+    }
+    .rtl .certificates__course-name {
+        font-family: DinArabic;
     }
     .certificate .accomplishment-rendering .accomplishment-statement {
         width: 63%;
-        margin: 0 auto 45px;
+        margin: 0 auto 33px;
         padding: 0;
     }
     .signatory {
@@ -270,6 +291,7 @@ course_mode_class = course_mode if course_mode else ''
                         <strong class="certificates__owner-name">${accomplishment_copy_name | h}</strong>
                         <span class="certificates__static-text">${_('Successfully completed')}</span>
                         <div class="certificates__course-name">${accomplishment_copy_course_name}</div>
+                        <span class="certificates__static-text certificates__static-text--small">A course of study offered by the<br>Al Ghurair Young Thinkers Programm</span>
                     </p>
                 </div>
 
