@@ -22,6 +22,13 @@ course_mode_class = course_mode if course_mode else ''
         font-style: normal;
     }
     @font-face {
+        font-family: 'Avenir';
+        src: url('/static/fonts/AvenirNextLTPro-Bold.woff2') format('woff2'),
+        url('/static/fonts/AvenirNextLTPro-Bold.woff') format('woff');
+        font-weight: 800;
+        font-style: normal;
+    }
+    @font-face {
         font-family: 'DinArabic';
         src: url('/static/fonts/DINNextLTArabic-Medium.woff2') format('woff2'),
         url('/static/fonts/DINNextLTArabic-Medium.woff') format('woff');
@@ -209,6 +216,12 @@ course_mode_class = course_mode if course_mode else ''
     .list-signatories {
         transform: translate(7%);
     }
+    .rtl .list-signatories {
+        transform: translate(-7%);
+    }
+    .wrapper-signatories {
+        margin-top: -10px;
+    }
     @media print {
         @page {
             size: landscape;
@@ -307,9 +320,9 @@ course_mode_class = course_mode if course_mode else ''
                     <p class="accomplishment-statement-lead">
                         <span class="certificates__static-text">${_('This is to certify that')}</span>
                         <strong class="certificates__owner-name">${accomplishment_copy_name | h}</strong>
-                        <span class="certificates__static-text">${_('Successfully completed')}</span>
+                        <span class="certificates__static-text">${_('successfully completed')}</span>
                         <div class="certificates__course-name">${accomplishment_copy_course_name}</div>
-                        <span class="certificates__static-text certificates__static-text--small">A course of study offered by the<br>Al Ghurair Young Thinkers Programm</span>
+                        <span class="certificates__static-text certificates__static-text--small">${_('A course of study offered by the')}<br>${_('Al Ghurair Young Thinkers Programm')}</span>
                     </p>
                 </div>
 
