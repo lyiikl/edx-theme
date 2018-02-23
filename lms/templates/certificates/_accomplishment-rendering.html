@@ -81,6 +81,7 @@ course_mode_class = course_mode if course_mode else ''
     .certificates__static-text {
         font-family: Avenir;
         font-size: 22px;
+        font-weight: 600;
     }
     .rtl .certificates__static-text {
         font-family: DinArabic;
@@ -119,7 +120,7 @@ course_mode_class = course_mode if course_mode else ''
     }
     .certificate .accomplishment-rendering .accomplishment-statement {
         width: 63%;
-        margin: 0 auto 33px;
+        margin: 0 auto 10px;
         padding: 0;
     }
     .signatory {
@@ -128,7 +129,11 @@ course_mode_class = course_mode if course_mode else ''
     }
     .signatory-holder {
         display: block;
-        
+        font-family: Avenir, sans-serif;
+        font-weight: 600;
+    }
+    .rtl .signatory-holder {
+        font-family: DinArabic;
     }
     body .accomplishment-rendering .accomplishment-signatories .signatory-credentials {
         text-align: left;
@@ -172,6 +177,11 @@ course_mode_class = course_mode if course_mode else ''
         text-align: left;
         padding-top: 16px;
         font-size: 19px;
+        font-family: Avenir, sans-serif;
+        font-weight: 600;
+    }
+    .rtl .issued-on {
+        font-family: DinArabic;
     }
     .accomplishment-rendering .wrapper-statement-and-signatories,
     .accomplishment-rendering .accomplishment-statement,
@@ -195,6 +205,9 @@ course_mode_class = course_mode if course_mode else ''
         max-height: 1000%;
         max-width: 1000% !important;
         width: 490px;
+    }
+    .list-signatories {
+        transform: translate(7%);
     }
     @media print {
         @page {
@@ -221,14 +234,19 @@ course_mode_class = course_mode if course_mode else ''
             margin: 0 auto;
         }
         .certificates__proove {
-            font: 21px/30px Avenir;
+            font: 600 21px/30px Avenir;
         }
         .certificates__owner-name {
             font: 800 60px/50px Avenir;
         }
         .certificates__award-text {
-            font: 17px/24px Avenir;
+            font: 600 17px/24px Avenir;
             max-height: 141px;
+        }
+        .rtl .certificates__proove,
+        .rtl .certificates__owner-name,
+        .rtl .certificates__award-text {
+            font-family: DinArabic;
         }
         .certificates__stamp-name {
             font-size: 17px;
