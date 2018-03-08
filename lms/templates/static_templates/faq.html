@@ -1,0 +1,170 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("FAQ")}</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="about">
+        <div class="bg section-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="title">أسئلة شائعة</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-push-1">
+                        <div class="list-group">
+                            <a href="#section-one" class="list-group-item smooth-scroll-to-target">
+                                ما هي المنصة التدريبية؟
+                            </a>
+                            <a href="#section-two" class="list-group-item smooth-scroll-to-target">
+                                ماهي اهداف المنصة؟
+                            </a>
+
+                            <a href="#section-three" class="list-group-item smooth-scroll-to-target">
+                                من هي الفئة المستهدفة من المنصة؟
+                            </a>
+
+                            <a href="#section-four" class="list-group-item smooth-scroll-to-target">
+                                هل توجد رسوم للاشتراك في المنصة؟
+                            </a>
+
+                            <a href="#section-five" class="list-group-item smooth-scroll-to-target">
+                                من يقدم الدعم التدريبي في حال وجود استفسارات عن المواد المقدمة؟
+                            </a>
+
+                            <a href="#section-six" class="list-group-item smooth-scroll-to-target">
+                                كيف يمكن التسجيل في المنصة
+                            </a>
+
+                            <a href="#section-seven" class="list-group-item smooth-scroll-to-target">
+                                ماهي الشهادات المقدمة في البوابة؟
+                            </a>
+
+                            <a href="#section-eight" class="list-group-item smooth-scroll-to-target">
+                                هل يمكنني التواصل مع العاملين على المنصة وتقديم الاقتراحات او الملاحظات؟
+                            </a>
+
+                            <a href="#section-nine" class="list-group-item smooth-scroll-to-target">
+                                ماهي طريقة التسجيل في الدورات؟
+                            </a>
+
+                            <a href="#section-ten" class="list-group-item smooth-scroll-to-target">
+                                كيف هي طريقة عرض الدورات التدريبية؟
+                            </a>
+
+                            <a href="#section-eleven" class="list-group-item smooth-scroll-to-target">
+                                كيف يمكن الحصول على الشهادة؟
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-10 col-md-push-1">
+                        <ul class="list">
+                            <li>
+                                <div id="section-one" class="mb-50">
+                                    <h3>ما هي المنصة التدريبية؟</h3>
+                                    <p class="mb-20">المنصة التدريبية هي إحدى مبادرات وزارة التعليم في برنامج التحول
+                                الوطني ٢٠٢٠ وهي موجهه للطلاب في التعليم العام والعالي من خلال محوري الاستثمار وريادة
+                                الأعمال ، وكذلك انشاء والتحوّل لشركات الاكتتاب العام، وتحتوى البرامج على مواضيع متعلقة
+                                بريادة الاعمال، انشاء الشركات، التسويق، إدارة المشاريع، تنمية المشاريع وغيرها، ويقدم
+                                البرنامج بشكل تزامني (جدولة زمنية) وغير تزامني (تدريب ذاتي) بمحتوى رقمي متنوع الوسائط
+                                (صور ومقاطع مرئية ومواد متحركة ورسوم إيضاحية، ومواد تفاعلية)، وبرصد مستمر للتقدم في
+                                التدريب بالتوافق مع المعايير العالمية
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="section-two" class="mb-50">
+                                    <h3>ماهي اهداف المنصة؟</h3>
+                                    <p class="mb-20">
+                                الهدف من المنصة هو زيادة الوعي المعرفي والمهاري فيما يتعلق بالاستثمار وريادة الاعمال وكذلك ما يتعلق بإنشاء والتحوّل لشركات الاكتتاب العام حسب الفئات المستهدفة
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="section-three" class="mb-50">
+                                    <h3>من هي الفئة المستهدفة من المنصة؟</h3>
+                                    <p class="mb-20">
+المنصة مخصصة لطلاب التعليم العام والعالي في المملكة العربية السعودية
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="section-four" class="mb-50">
+                                    <h3>هل توجد رسوم للاشتراك في المنصة؟</h3>
+                                    <p class="mb-20">
+                                جميع المحتويات في المنصة مجانية
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="section-five" class="mb-50">
+                                    <h3>من يقدم الدعم التدريبي في حال وجود استفسارات عن المواد المقدمة؟</h3>
+                                    <p class="mb-20">
+                                يوجد فريق متخصص يقوم بالاطلاع على الأسئلة والاستفسارات المقدمة من الطلاب ويقوم بالإجابة عنها وتقديم المصادر الإضافية عند الحاجة
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="section-six" class="mb-50">
+                                    <h3>كيف يمكن التسجيل في المنصة</h3>
+                                    <p class="mb-20">
+                                في الوقت الحالي المنصة لا تزال تحت الاطلاق التجريبي ولذلك فالتسجيل في المنصة يتم عبر الدعوات التي يتم ارسالها للطلاب وسيتم اطلاق التسجيل في الدورات التدريبية عند الاطلاق النهائي للمنصة
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="section-seven" class="mb-50">
+                                    <h3>ماهي الشهادات المقدمة في البوابة؟</h3>
+                                     <p class="mb-20">
+                                الشهادات مقدمة من منصة وزارة التعليم للتدريب
+                                </p>
+                            </div>
+                            </li>
+                            <li>
+                                <div id="section-eight" class="mb-50">
+                                    <h3>هل يمكنني التواصل مع العاملين على المنصة وتقديم الاقتراحات او الملاحظات؟</h3>
+                            <p class="mb-20">
+                                نعم، يمكنك التواصل من خلال
+                                <a href="mailto:http://etraining.moe.gov.sa/contact?Subject=FAQ_Question" target="_top"
+                                   style="color: #337ab7 !important;">الدعم الفني</a>
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="section-nine" class="mb-50">
+                                    <h3>ماهي طريقة التسجيل في الدورات؟</h3>
+                            <p class="mb-20">
+                                يمكن التسجيل في الدورات قبل اقامتها فعلياً حيث يتم طرح الدورات التي ستقام قبل مدة مناسبة، كما يمكن التسجيل في أي دورة يتم اقامتها حالياً
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="section-ten" class="mb-50">
+                                    <h3>كيف هي طريقة عرض الدورات التدريبية؟</h3>
+                                    <p class="mb-20">
+                                يتم عرض الدورات التدريبية مقسمة على أسابيع، بحيث تستهلك الدورة التدريبية حوالي ساعة ونصف الى ساعتين من الجهد اسبوعياً، ويتم عرض المحتوى تباعاً بشكل اسبوعي حتى نهاية الدورة
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="section-eleven" class="mb-50">
+                                    <h3>كيف يمكن الحصول على الشهادة؟</h3>
+                            <p class="mb-20">
+                                يمكن الحصول على الشهادة عند إتمام متطلبات الدورة التدريبية، ويظهر لدى المتدرب رابط للحصول على الشهادة
+                            </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,38 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("About")}</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="about">
+        <section>
+            <div class="bg section-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1 class="title">${_("About")}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+            <div class="section-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img class="img-fullwidth" src="/static/${settings.DEFAULT_SITE_THEME}/images/about-content-img.jpg" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <h2>عن <span class="text-theme-colored2">المنصة</span></h2>
+                            <div class="separator-line"></div>
+                            <p>انطلاقاً من رؤية المملكة 2030 للوصول الى اقتصاد مزدهر و وطن طموح أطلقت وزارة التعليم منصة متكاملة لنشر محتوى التدريب الالكتروني لتمكين الطلاب والطالبات في مجالات متعددة ، تعد المنصة أحد أهم مبادرات برنامج التحول الوطني 2020 وتهدف إلى رفع المستوى المعرفي والمهاري في عدد من المجالات اللامنهجية والتي تعزز الفكر العملي والريادي في المجتمع السعودي من خلال برامج وحزم تدريبية مصممة خصيصاً لدعم طلاب التعليم العام والتعليم العالي.</p>
+                            <p class="hidden-md">تستهدف المنصة في مرحلتها الأولى محوري الاستثمار وريادة الأعمال الموجه لطلاب وطالبات الثانوية العامة، وكذلك انشاء والتحوّل لشركات الاكتتاب العام والموجه لطلاب وطالبات الجامعات السعودية، وتحتوى البرامج على مواضيع متعلقة بريادة الاعمال، انشاء الشركات، التسويق، إدارة المشاريع، تنمية المشاريع وغيرها، ويقدم البرنامج بشكل تزامني (جدولة زمنية) وغير تزامني (تدريب ذاتي) بمحتوى رقمي متنوع الوسائط (صور ومقاطع مرئية ومواد متحركة ورسوم إيضاحية، ومواد تفاعلية)، وبرصد مستمر للتقدم في التدريب بالتوافق مع المعايير العالمية.</p>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </section>
+</main>
