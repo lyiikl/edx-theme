@@ -350,13 +350,13 @@ input[type="button"]{
 }
 
 .btn-dark {
-    background: #222;
-    border: 1px solid #222;
+    background: #00b0a2;
+    border: 1px solid #00b0a2;
     &:hover {
-        background: #222;
-        border-color: #222;
+        background: #00b0a2;
+        border-color: #00b0a2;
         &:not(:disabled) {
-            background: #222;
+            background: #00b0a2;
         }
     }
 }
@@ -836,6 +836,7 @@ input[type="button"]{
 }
 
 .icon-box {
+    min-height: 310px;
     margin-bottom: 30px;
     padding: 40px 15px 30px;
     text-align: center;
@@ -2394,4 +2395,12 @@ table {
             }
         }
     }
+}
+
+.footer-nav {
+    padding-right: 0px!important;
+}
+
+.content, .course-wrapper .course-content, .course-wrapper .courseware-results-wrapper, div.info-wrapper section.updates, div.book-wrapper .book, .profile-wrapper .course-info, div.gradebook-wrapper section.gradebook-content, .view-student-notes .wrapper-student-notes .student-notes, .instructor-dashboard-content-2 {
+    width: 10%!important;
 }
