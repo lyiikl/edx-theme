@@ -2401,11 +2401,24 @@ table {
     padding-right: 0px!important;
 }
 
-.content, .course-wrapper .course-content, .course-wrapper .courseware-results-wrapper, div.info-wrapper section.updates, div.book-wrapper .book, .profile-wrapper .course-info, div.gradebook-wrapper section.gradebook-content, .view-student-notes .wrapper-student-notes .student-notes, .instructor-dashboard-content-2 {
+.course-content{
     width: 10%!important;
 }
 
 p.footer-title {
     font-size: 18px;
     color: #00b0a2;
+}
+
+div article .date{
+    padding-left: 20px;
+}
+
+.empty-dashboard-message a{
+    background-color: #00b0a2;
+    border: 1px solid #00b0a2;
+}
+.empty-dashboard-message a:hover {
+    background-color: #00b0a2;
+    border: 1px solid #00b0a2;
 }
