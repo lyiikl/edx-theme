@@ -11,336 +11,392 @@ from openedx.core.lib.courses import course_image_url
 
 <%inherit file="../main.html" />
 <%block name="headextra">
-  ## OG (Open Graph) title and description added below to give social media info to display
-  ## (https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content#tags)
-  <meta property="og:title" content="${course.display_name_with_default_escaped}" />
-  <meta property="og:description" content="${get_course_about_section(request, course, 'short_description')}" />
+## OG (Open Graph) title and description added below to give social media info to display
+## (https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content#tags)
+<meta property="og:title" content="${course.display_name_with_default_escaped}"/>
+<meta property="og:description" content="${get_course_about_section(request, course, 'short_description')}"/>
 </%block>
 
 <%block name="js_extra">
-  <script type="text/javascript">
-  (function() {
-    $(".register").click(function(event) {
-      $("#class_enroll_form").submit();
-      event.preventDefault();
-    });
+<script type="text/javascript">
+    (function () {
+        $(".register").click(function (event) {
+            $("#class_enroll_form").submit();
+            event.preventDefault();
+        });
 
-    % if can_add_course_to_cart:
-      add_course_complete_handler = function(jqXHR, textStatus) {
-        if (jqXHR.status == 200) {
-          location.href = "${cart_link}";
-        }
-        if (jqXHR.status == 400) {
-          $("#register_error")
-            .html(jqXHR.responseText ? jqXHR.responseText : "${_("An error occurred. Please try again later.")}")
-            .css("display", "block");
-        }
-        else if (jqXHR.status == 403) {
-            location.href = "${reg_then_add_to_cart_link}";
-        }
-      };
+        %
+        if can_add_course_to_cart:
+        add_course_complete_handler = function (jqXHR, textStatus) {
+            if (jqXHR.status == 200) {
+                location.href = "${cart_link}";
+            }
+            if (jqXHR.status == 400) {
+                $("#register_error")
+                    .html(jqXHR.responseText ? jqXHR.responseText : "${_("
+                An
+                error
+                occurred.Please
+                try
+                again
+                later.
+                ")}"
+            )
+            .
+                css("display", "block");
+            }
+            else if (jqXHR.status == 403) {
+                location.href = "${reg_then_add_to_cart_link}";
+            }
+        };
 
-      $("#add_to_cart_post").click(function(event){
-        $.ajax({
-          url: "${reverse('add_course_to_cart', args=[course.id.to_deprecated_string()])}",
-          type: "POST",
-          /* Rant: HAD TO USE COMPLETE B/C PROMISE.DONE FOR SOME REASON DOES NOT WORK ON THIS PAGE. */
-          complete: add_course_complete_handler
-        })
-        event.preventDefault();
-      });
-    % endif
+        $("#add_to_cart_post").click(function (event) {
+            $.ajax({
+                url: "${reverse('add_course_to_cart', args=[course.id.to_deprecated_string()])}",
+                type: "POST",
+                /* Rant: HAD TO USE COMPLETE B/C PROMISE.DONE FOR SOME REASON DOES NOT WORK ON THIS PAGE. */
+                complete: add_course_complete_handler
+            })
+            event.preventDefault();
+        });
+        %
+        endif
 
-    ## making the conditional around this entire JS block for sanity
-    %if settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain:
-      <%
+    ## making
+        the
+        conditional
+        around
+        this
+        entire
+        JS
+        block
+        for sanity
+            %if settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and
+        course.enrollment_domain
+        :
+        <%
         perms_error = _('The currently logged-in user account does not have permission to enroll in this course. '
-                        'You may need to {start_logout_tag}log out{end_tag} then try the enroll button again. '
-                        'Please visit the {start_help_tag}help page{end_tag} for a possible solution.').format(
-                          start_help_tag="<a href='{url}'>".format(url=marketing_link('FAQ')), end_tag='</a>',
-                          start_logout_tag="<a href='{url}'>".format(url=reverse('logout'))
-                          )
-      %>
-    $('#class_enroll_form').on('ajax:complete', function(event, xhr) {
-      if(xhr.status == 200) {
-        location.href = "${reverse('dashboard')}";
-      } else if (xhr.status == 403) {
-        location.href = "${reverse('course-specific-register', args=[course.id.to_deprecated_string()])}?course_id=${course.id | u}&enrollment_action=enroll";
-      } else if (xhr.status == 400) { //This means the user did not have permission
-        $('#register_error').html("${perms_error}").css("display", "block");
-      } else {
-        $('#register_error').html(
-            (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.")}")
-        ).css("display", "block");
-      }
-    });
+        'You may need to {start_logout_tag}log out{end_tag} then try the enroll button again. '
+        'Please visit the {start_help_tag}help page{end_tag} for a possible solution.'
+        ).
+        format(
+            start_help_tag = "<a href='{url}'>".format(url = marketing_link('FAQ')), end_tag = '</a>',
+            start_logout_tag = "<a href='{url}'>".format(url = reverse('logout'))
+        )
+        % >
+        $('#class_enroll_form').on('ajax:complete', function (event, xhr) {
+            if (xhr.status == 200) {
+                location.href = "${reverse('dashboard')}";
+            } else if (xhr.status == 403) {
+                location.href = "${reverse('course-specific-register', args=[course.id.to_deprecated_string()])}?course_id=${course.id | u}&enrollment_action=enroll";
+            } else if (xhr.status == 400) { //This means the user did not have permission
+                $('#register_error').html("${perms_error}").css("display", "block");
+            } else {
+                $('#register_error').html(
+                    (xhr.responseText ? xhr.responseText : "${_("
+                An
+                error
+                occurred.Please
+                try
+                again
+                later.
+                ")}"
+            )
+            ).
+                css("display", "block");
+            }
+        });
 
-    %else:
+        %else:
 
-    $('#class_enroll_form').on('ajax:complete', function(event, xhr) {
-      if(xhr.status == 200) {
-        if (xhr.responseText == "") {
-          location.href = "${reverse('dashboard')}";
-        }
-        else {
-          location.href = xhr.responseText;
-        }
-      } else if (xhr.status == 403) {
-          location.href = "${reverse('register_user')}?course_id=${course.id | u}&enrollment_action=enroll";
-      } else {
-        $('#register_error').html(
-            (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.")}")
-        ).css("display", "block");
-      }
-    });
+        $('#class_enroll_form').on('ajax:complete', function (event, xhr) {
+            if (xhr.status == 200) {
+                if (xhr.responseText == "") {
+                    location.href = "${reverse('dashboard')}";
+                }
+                else {
+                    location.href = xhr.responseText;
+                }
+            } else if (xhr.status == 403) {
+                location.href = "${reverse('register_user')}?course_id=${course.id | u}&enrollment_action=enroll";
+            } else {
+                $('#register_error').html(
+                    (xhr.responseText ? xhr.responseText : "${_("
+                An
+                error
+                occurred.Please
+                try
+                again
+                later.
+                ")}"
+            )
+            ).
+                css("display", "block");
+            }
+        });
 
-    %endif
+        %
+        endif
 
-  })(this)
-  </script>
+    })(this)
+</script>
 
-  <script src="${static.url('js/course_info.js')}"></script>
+<script src="${static.url('js/course_info.js')}"></script>
 </%block>
 
 <%block name="pagetitle">${course.display_name_with_default_escaped}</%block>
 
 <section class="course-info">
-  <div class="bg section-header">
-      <div class="container">
-          <div class="row">
-              <div class="col-md-6">
-                  <h1 class="title">${course.display_name}</h1>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="course-info-header">
-          <ul class="course-info-header-list">
-            <li>
-              <i class="pe-7s-user"></i>
-              <div class="pull-right">
-                <span>الأستاذ</span>
-                <h5 class="mt-0">د. محمد أحمد</h5>
-              </div>
-            </li>
-            <li>
-              <i class="pe-7s-ribbon"></i>
-              <div class="pull-right">
-                <span>القسم</span>
-                <h5 class="mt-0">الاستثمار وريادة الأعمال</h5>
-              </div>
-            </li>
-            <li>
-              <div class="main-cta">
-                %if user.is_authenticated() and registered:
-                  %if show_courseware_link:
-                    <a href="${course_target}">
-                  %endif
+    <div class="bg section-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="title">${course.display_name}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <!--<div class="col-md-8">-->
+            <!--<div class="course-info-header">-->
+            <!--<ul class="course-info-header-list">-->
+            <!--<li>-->
+            <!--<i class="pe-7s-user"></i>-->
+            <!--<div class="pull-right">-->
+            <!--<span>الأستاذ</span>-->
+            <!--<h5 class="mt-0">د. محمد أحمد</h5>-->
+            <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<i class="pe-7s-ribbon"></i>-->
+            <!--<div class="pull-right">-->
+            <!--<span>القسم</span>-->
+            <!--<h5 class="mt-0">الاستثمار وريادة الأعمال</h5>-->
+            <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="media course-main-image">
+                    <div class="hero">
+                        <img src="${course_image_urls['large']}" alt=""/>
+                    </div>
+                </div>
+                <div class="inner-wrapper">
+                    <div class="main-cta">
+                        %if user.is_authenticated() and registered:
+                        %if show_courseware_link:
+                        <a href="${course_target}">
+                            %endif
 
-                  <span class="register disabled btn btn-xl btn-dark">${_("You are enrolled in this course")}</span>
+                            <span class="register disabled btn btn-xl btn-dark">${_("You are enrolled in this course")}</span>
 
-                  %if show_courseware_link:
-                    <strong class="btn btn-xl">${_("View Course")}</strong>
-                    </a>
-                  %endif
+                            %if show_courseware_link:
+                            <strong class="btn btn-xl">${_("View Course")}</strong>
+                        </a>
+                        %endif
 
-                %elif in_cart:
-                  <span class="add-to-cart btn btn-xl">
+                        %elif in_cart:
+                        <span class="add-to-cart btn btn-xl">
                     ${_('This course is in your <a href="{cart_link}">cart</a>.').format(cart_link=cart_link)}
                   </span>
-                % elif is_course_full:
-                  <span class="register disabled btn btn-xl btn-dark">
+                        % elif is_course_full:
+                        <span class="register disabled btn btn-xl btn-dark">
                     ${_("Course is full")}
                   </span>
-                % elif invitation_only and not can_enroll:
-                  <span class="register disabled btn btn-xl btn-dark">${_("Enrollment in this course is by invitation only")}</span>
-                ## Shib courses need the enrollment button to be displayed even when can_enroll is False,
-                ## because AnonymousUsers cause can_enroll for shib courses to be False, but we need them to be able to click
-                ## so that they can register and become a real user that can enroll.
-                % elif not is_shib_course and not can_enroll:
-                  <span class="register disabled btn btn-xl btn-dark">${_("Enrollment is Closed")}</span>
-                %elif can_add_course_to_cart:
-                  <%
-                  if user.is_authenticated():
-                    reg_href = "#"
-                    reg_element_id = "add_to_cart_post"
-                  else:
-                    reg_href = reg_then_add_to_cart_link
-                    reg_element_id = "reg_then_add_to_cart"
-                  %>
-                  <% if ecommerce_checkout:
-                      reg_href = ecommerce_checkout_link
-                      reg_element_id = ""
-                  %>
-                  <a href="${reg_href}" class="add-to-cart btn btn-xl" id="${reg_element_id}">
-                    ${_("Add {course_name} to Cart <span>({price} USD)</span>")\
-                      .format(course_name=course.display_number_with_default, price=course_price)}
-                  </a>
-                  <div id="register_error"></div>
-                %else:
-                  <% 
-                    if ecommerce_checkout:
-                      reg_href = ecommerce_checkout_link
-                    else:
-                      reg_href="#"
-                    if professional_mode:
-                      href_class = "add-to-cart"
-                    else:
-                      href_class = "register"
-                  %>
-                  <a href="${reg_href}" class="${href_class} btn btn-xl">
-                    ${_("Enroll")}
-##                    ${_("Enroll in {course_name}").format(course_name=course.display_number_with_default) | h}
-                  </a>
-                  <div id="register_error"></div>
-                %endif
-                </div>
-              </li>
-            </ul>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8">
-        <div class="media course-main-image">
-          <div class="hero">
-            <img src="${course_image_urls['large']}" alt="" />
-          </div>
-        </div>
-        <div class="inner-wrapper">
-          ${get_course_about_section(request, course, "overview")}
-        </div>
-      </div>
-      <div class="col-sm-12 col-md-4">
-        <div class="sidebar sidebar-course">
-          <div class="widget sidebar-widget">
-            <h4 class="widget-title line-bottom-theme-color">مقدمة توضيحية</h4>
-            <a href="#video-modal" class="media video-preview" rel="leanModal">
-              <div class="hero">
-                <img src="${course_image_urls['large']}" alt="" />
-                <div class="play-intro"></div>
-              </div>
-            </a>
-          </div>
-          <div class="widget sidebar-widget">
-            <h4 class="widget-title line-bottom-theme-color">المتطلبات</h4>
-            <p>${get_course_about_section(request, course, 'short_description')}</p>
-          </div>
-          <div class="widget sidebar-widget">
-            <h4 class="widget-title line-bottom-theme-color">معلومات المقرر</h4>
-            <ol class="important-dates">
-              % if not course.start_date_is_still_default:
-                  <%
-                      course_start_date = course.start
-                  %>
-                <li class="important-dates-item">
-                  <span class="icon pe-7s-date" aria-hidden="true"></span>
-                  <p class="important-dates-item-title">${_("Classes Start")}:</p>
-                  % if isinstance(course_start_date, str):
-                      <span class="important-dates-item-text start-date">${course_start_date}</span>
-                  % else:
-                      <%
-                         course_date_string = course_start_date.strftime('%Y-%m-%dT%H:%M:%S%z')
-                      %>
-                      <span class="important-dates-item-text start-date localized_datetime" data-format="shortDate" data-datetime="${course_date_string}"></span>
-                  % endif
-                </li>
-              % endif
-                ## We plan to ditch end_date (which is not stored in course metadata),
-                ## but for backwards compatibility, show about/end_date blob if it exists.
-                % if get_course_about_section(request, course, "end_date") or course.end:
-                    <%
-                        course_end_date = course.end
-                    %>
-
-                <li class="important-dates-item">
-                    <span class="icon pe-7s-timer" aria-hidden="true"></span>
-                    <p class="important-dates-item-title">${_("Classes End")}:</p>
-                      % if isinstance(course_end_date, str):
-                          <span class="important-dates-item-text final-date">${course_end_date}</span>
-                      % else:
+                        % elif invitation_only and not can_enroll:
+                        <span class="register disabled btn btn-xl btn-dark">${_("Enrollment in this course is by invitation only")}</span>
+                        ## Shib courses need the enrollment button to be displayed even when can_enroll is False,
+                        ## because AnonymousUsers cause can_enroll for shib courses to be False, but we need them to be
+                        able to click
+                        ## so that they can register and become a real user that can enroll.
+                        % elif not is_shib_course and not can_enroll:
+                        <span class="register disabled btn btn-xl btn-dark">${_("Enrollment is Closed")}</span>
+                        %elif can_add_course_to_cart:
                         <%
-                            course_date_string = course_end_date.strftime('%Y-%m-%dT%H:%M:%S%z')
+                        if user.is_authenticated():
+                        reg_href = "#"
+                        reg_element_id = "add_to_cart_post"
+                        else:
+                        reg_href = reg_then_add_to_cart_link
+                        reg_element_id = "reg_then_add_to_cart"
                         %>
-                        <span class="important-dates-item-text final-date localized_datetime" data-format="shortDate" data-datetime="${course_date_string}"></span>
-                      % endif
-                </li>
-                % endif
+                        <% if ecommerce_checkout:
+                        reg_href = ecommerce_checkout_link
+                        reg_element_id = ""
+                        %>
+                        <a href="${reg_href}" class="add-to-cart btn btn-xl" id="${reg_element_id}">
+                            ${_("Add {course_name} to Cart <span>({price} USD)</span>")\
+                            .format(course_name=course.display_number_with_default, price=course_price)}
+                        </a>
+                        <div id="register_error"></div>
+                        %else:
+                        <%
+                        if ecommerce_checkout:
+                        reg_href = ecommerce_checkout_link
+                        else:
+                        reg_href="#"
+                        if professional_mode:
+                        href_class = "add-to-cart"
+                        else:
+                        href_class = "register"
+                        %>
+                        <a href="${reg_href}" class="${href_class} btn btn-xl">
+                            ${_("Enroll")}
+                            ## ${_("Enroll in {course_name}").format(course_name=course.display_number_with_default) |
+                            h}
+                        </a>
+                        <div id="register_error"></div>
+                        %endif
+                    </div>
 
-              % if get_course_about_section(request, course, "effort"):
-                <li class="important-dates-item">
-                  <span class="icon pe-7s-diamond" aria-hidden="true"></span>
-                  <p class="important-dates-item-title">${_("Estimated Effort")}:</p>
-                  <span class="important-dates-item-text effort">${get_course_about_section(request, course, "effort")}</span>
-                </li>
-              % endif
+                    ${get_course_about_section(request, course, "overview")}
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="sidebar sidebar-course">
+                    <div class="widget sidebar-widget">
+                        <h4 class="widget-title line-bottom-theme-color">مقدمة توضيحية</h4>
+                        <a href="#video-modal" class="media video-preview" rel="leanModal">
+                            <div class="hero">
+                                <img src="${course_image_urls['large']}" alt=""/>
+                                <div class="play-intro"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="widget sidebar-widget">
+                        <h4 class="widget-title line-bottom-theme-color">المتطلبات</h4>
+                        <p>${get_course_about_section(request, course, 'short_description')}</p>
+                    </div>
+                    <div class="widget sidebar-widget">
+                        <h4 class="widget-title line-bottom-theme-color">معلومات المقرر</h4>
+                        <ol class="important-dates">
+                            % if not course.start_date_is_still_default:
+                            <%
+                            course_start_date = course.start
+                            %>
+                            <li class="important-dates-item">
+                                <span class="icon pe-7s-date" aria-hidden="true"></span>
+                                <p class="important-dates-item-title">${_("Classes Start")}:</p>
+                                % if isinstance(course_start_date, str):
+                                <span class="important-dates-item-text start-date">${course_start_date}</span>
+                                % else:
+                                <%
+                                course_date_string = course_start_date.strftime('%Y-%m-%dT%H:%M:%S%z')
+                                %>
+                                <span class="important-dates-item-text start-date localized_datetime"
+                                      data-format="shortDate" data-datetime="${course_date_string}"></span>
+                                % endif
+                            </li>
+                            % endif
+                            ## We plan to ditch end_date (which is not stored in course metadata),
+                            ## but for backwards compatibility, show about/end_date blob if it exists.
+                            % if get_course_about_section(request, course, "end_date") or course.end:
+                            <%
+                            course_end_date = course.end
+                            %>
 
-              <li class="important-dates-item">
-                <i class="icon pe-7s-note2" aria-hidden="true"></i>
-                <p class="important-dates-item-title">${_("Course Number")}:</p>
-                <span class="important-dates-item-text course-number">${course.display_number_with_default | h}</span>
-              </li>
+                            <li class="important-dates-item">
+                                <span class="icon pe-7s-timer" aria-hidden="true"></span>
+                                <p class="important-dates-item-title">${_("Classes End")}:</p>
+                                % if isinstance(course_end_date, str):
+                                <span class="important-dates-item-text final-date">${course_end_date}</span>
+                                % else:
+                                <%
+                                course_date_string = course_end_date.strftime('%Y-%m-%dT%H:%M:%S%z')
+                                %>
+                                <span class="important-dates-item-text final-date localized_datetime"
+                                      data-format="shortDate" data-datetime="${course_date_string}"></span>
+                                % endif
+                            </li>
+                            % endif
 
-              ##<li class="important-dates-item"><span class="icon fa fa-clock-o" aria-hidden="true"></span><p class="important-dates-item-title">${_('Course Length')}</p><span class="important-dates-item-text course-length">${_('{number} weeks').format(number=15)}</span></li>
+                            % if get_course_about_section(request, course, "effort"):
+                            <li class="important-dates-item">
+                                <span class="icon pe-7s-diamond" aria-hidden="true"></span>
+                                <p class="important-dates-item-title">${_("Estimated Effort")}:</p>
+                                <span class="important-dates-item-text effort">${get_course_about_section(request, course, "effort")}</span>
+                            </li>
+                            % endif
 
-              %if course_price and (can_add_course_to_cart or is_cosmetic_price_enabled):
-                <li class="important-dates-item">
-                  <span class="icon fa fa-money" aria-hidden="true"></span>
-                  <p class="important-dates-item-title">${_("Price")}:</p>
-                  <span class="important-dates-item-text">${course_price}</span>
-                </li>
-              %endif
+                            <li class="important-dates-item">
+                                <i class="icon pe-7s-note2" aria-hidden="true"></i>
+                                <p class="important-dates-item-title">${_("Course Number")}:</p>
+                                <span class="important-dates-item-text course-number">${course.display_number_with_default | h}</span>
+                            </li>
 
-              % if pre_requisite_courses:
-              <% prc_target = reverse('about_course', args=[unicode(pre_requisite_courses[0]['key'])]) %>
-              <li class="prerequisite-course important-dates-item">
-                <span class="icon fa fa-list-ul" aria-hidden="true"></span>
-                <p class="important-dates-item-title">${_("Prerequisites")}:</p>
-                ## Multiple pre-requisite courses are not supported on frontend that's why we are pulling first element
-                <span class="important-dates-item-text pre-requisite"><a href="${prc_target}">${pre_requisite_courses[0]['display']}</a></span>
-                <p class="tip">
-                ${_("You must successfully complete {link_start}{prc_display}{link_end} before you begin this course.").format(
-                  link_start='<a href="{}">'.format(prc_target),
-                  link_end='</a>',
-                  prc_display=pre_requisite_courses[0]['display'],
-                )}
-                </p>
-              </li>
-              % endif
-              % if get_course_about_section(request, course, "prerequisites"):
-                <li class="important-dates-item"><span class="icon fa fa-book" aria-hidden="true"></span><p class="important-dates-item-title">${_("Requirements")}</p><span class="important-dates-item-text prerequisites">${get_course_about_section(request, course, "prerequisites")}</span></li>
-              % endif
-            </ol>
-          </div>
+                            ##
+                            <li class="important-dates-item"><span class="icon fa fa-clock-o" aria-hidden="true"></span>
+                                <p class="important-dates-item-title">${_('Course Length')}</p><span
+                                        class="important-dates-item-text course-length">${_('{number} weeks').format(number=15)}</span>
+                            </li>
+
+                            %if course_price and (can_add_course_to_cart or is_cosmetic_price_enabled):
+                            <li class="important-dates-item">
+                                <span class="icon fa fa-money" aria-hidden="true"></span>
+                                <p class="important-dates-item-title">${_("Price")}:</p>
+                                <span class="important-dates-item-text">${course_price}</span>
+                            </li>
+                            %endif
+
+                            % if pre_requisite_courses:
+                            <% prc_target = reverse('about_course', args=[unicode(pre_requisite_courses[0]['key'])]) %>
+                            <li class="prerequisite-course important-dates-item">
+                                <span class="icon fa fa-list-ul" aria-hidden="true"></span>
+                                <p class="important-dates-item-title">${_("Prerequisites")}:</p>
+                                ## Multiple pre-requisite courses are not supported on frontend that's why we are
+                                pulling first element
+                                <span class="important-dates-item-text pre-requisite"><a href="${prc_target}">${pre_requisite_courses[0]['display']}</a></span>
+                                <p class="tip">
+                                    ${_("You must successfully complete {link_start}{prc_display}{link_end} before you
+                                    begin this course.").format(
+                                    link_start='<a href="{}">'.format(prc_target),
+                                    link_end='</a>',
+                                    prc_display=pre_requisite_courses[0]['display'],
+                                    )}
+                                </p>
+                            </li>
+                            % endif
+                            % if get_course_about_section(request, course, "prerequisites"):
+                            <li class="important-dates-item"><span class="icon fa fa-book" aria-hidden="true"></span>
+                                <p class="important-dates-item-title">${_("Requirements")}</p><span
+                                        class="important-dates-item-text prerequisites">${get_course_about_section(request, course, "prerequisites")}</span>
+                            </li>
+                            % endif
+                        </ol>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
 ## Need to put this hidden form on the page so that the registration button works.
 ## Since it's no harm to display a hidden form, we display it with the most permissive conditional
 ## which is when the student is not registered.
 %if active_reg_button or is_shib_course:
-  <div style="display: none;">
+<div style="display: none;">
     <form id="class_enroll_form" method="post" data-remote="true" action="${reverse('change_enrollment')}">
-      <fieldset class="enroll_fieldset">
-        <legend class="sr">${_("Enroll")}</legend>
-        <input name="course_id" type="hidden" value="${course.id | h}">
-        <input name="enrollment_action" type="hidden" value="enroll">
-      </fieldset>
-      <div class="submit">
-        <input name="submit" type="submit" value="${_('enroll')}">
-      </div>
+        <fieldset class="enroll_fieldset">
+            <legend class="sr">${_("Enroll")}</legend>
+            <input name="course_id" type="hidden" value="${course.id | h}">
+            <input name="enrollment_action" type="hidden" value="enroll">
+        </fieldset>
+        <div class="submit">
+            <input name="submit" type="submit" value="${_('enroll')}">
+        </div>
     </form>
-  </div>
+</div>
 %endif
 
 <%include file="../video_modal.html" />
 
 <%static:require_module_async module_name="js/dateutil_factory" class_name="DateUtilFactory">
-    DateUtilFactory.transform(iterationKey=".localized_datetime");
+DateUtilFactory.transform(iterationKey=".localized_datetime");
 </%static:require_module_async>
