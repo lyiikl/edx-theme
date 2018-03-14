@@ -87,5 +87,10 @@ from django.utils.translation import ugettext as _
 <script>
     var active = window.location.pathname;
     $(".nav").find(".active").removeClass("active");
-    $(".nav a[href|='" + active + "']").parent().addClass("active");
+    if ((active) && (active != "/contact/")){
+        $(".nav a[href|='" + active + "']").parent().addClass("active");
+    }
+    else if (active == "/contact/"){
+        $(".nav a[href|='/contact']").parent().addClass("active");
+    }
 </script>
