@@ -21,7 +21,8 @@
                     <div class="row">
                         <div class="col-md-7">
                             <!--<h3 class="line-bottom">للتواصل</h3>-->
-                            <form id="contact_form" name="contact_form" class="" action="" method="post">
+                            <form id="contact_form" name="contact_form" class="/contact" action="" method="post">
+                                   <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-field">
@@ -32,7 +33,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-field">
                                             <label>البريد الإلكتروني <small>*</small></label>
-                                            <input name="form_email" class="input-block required email" type="email" placeholder="البريد الالكتروني">
+                                            <input name="form_email" class="input-block required email" type="email" placeholder="البريد الالكتروني" required="">
                                         </div>
                                     </div>
                                 </div>
@@ -40,7 +41,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-field">
                                             <label>عنوان الإستفسار <small>*</small></label>
-                                            <input name="form_subject" class="input-block required" type="text" placeholder=" عنوان الإستفسار">
+                                            <input name="form_subject" class="input-block required" type="text" placeholder=" عنوان الإستفسار" required="">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
