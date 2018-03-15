@@ -2437,12 +2437,13 @@ i.pe-7s-date {
 }
 
 .account-activation .message-copy {
-    left: 0em!important;
+    padding-left: 0em!important;
 }
 
-.account-activation.account-activation.aa-icon.success {
-    padding-left: 5%;
-}
 .empty-dashboard-message:hover {
     color: white!important;
+}
+
+.account-activation.info.aa-icon .message-copy:before {
+    left: 0em !important;
 }
