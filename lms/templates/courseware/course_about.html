@@ -163,8 +163,7 @@ from openedx.core.lib.courses import course_image_url
                                 % elif not is_shib_course and not can_enroll:
                                 <span class="register disabled btn btn-xl btn-dark">${_("Enrollment is Closed")}</span>
                                 %elif can_add_course_to_cart:
-                                <%
-                                if user.is_authenticated():
+                                <% if user.is_authenticated():
                                 reg_href = "#"
                                 reg_element_id = "add_to_cart_post"
                                 else:
@@ -181,8 +180,7 @@ from openedx.core.lib.courses import course_image_url
                                 </a>
                                 <div id="register_error"></div>
                                 %else:
-                                <%
-                                if ecommerce_checkout:
+                                <% if ecommerce_checkout:
                                 reg_href = ecommerce_checkout_link
                                 else:
                                 reg_href="#"
