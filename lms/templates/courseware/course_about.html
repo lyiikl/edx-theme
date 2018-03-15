@@ -19,38 +19,28 @@ from openedx.core.lib.courses import course_image_url
 
 <%block name="js_extra">
 <script type="text/javascript">
-    (function () {
-        $(".register").click(function (event) {
+    (function() {
+        $(".register").click(function(event) {
             $("#class_enroll_form").submit();
             event.preventDefault();
         });
 
-        %
-        if can_add_course_to_cart:
+        % if can_add_course_to_cart:
         add_course_complete_handler = function (jqXHR, textStatus) {
             if (jqXHR.status == 200) {
                 location.href = "${cart_link}";
             }
             if (jqXHR.status == 400) {
                 $("#register_error")
-                    .html(jqXHR.responseText ? jqXHR.responseText : "${_("
-                An
-                error
-                occurred.Please
-                try
-                again
-                later.
-                ")}"
-            )
-            .
-                css("display", "block");
+            .html(jqXHR.responseText ? jqXHR.responseText : "${_("An error occurred. Please try again later.")}")
+            .css("display", "block");
             }
             else if (jqXHR.status == 403) {
                 location.href = "${reg_then_add_to_cart_link}";
             }
         };
 
-        $("#add_to_cart_post").click(function (event) {
+        $("#add_to_cart_post").click(function(event){
             $.ajax({
                 url: "${reverse('add_course_to_cart', args=[course.id.to_deprecated_string()])}",
                 type: "POST",
@@ -59,87 +49,55 @@ from openedx.core.lib.courses import course_image_url
             })
             event.preventDefault();
         });
-        %
-        endif
+    % endif
 
-    ## making
-        the
-        conditional
-        around
-        this
-        entire
-        JS
-        block
-        for sanity
-            %if settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and
-        course.enrollment_domain
-        :
-        <%
+    ## making the conditional around this entire JS block for sanity
+    %if settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain:
+    <%
         perms_error = _('The currently logged-in user account does not have permission to enroll in this course. '
-        'You may need to {start_logout_tag}log out{end_tag} then try the enroll button again. '
-        'Please visit the {start_help_tag}help page{end_tag} for a possible solution.'
-        ).
-        format(
-            start_help_tag = "<a href='{url}'>".format(url = marketing_link('FAQ')), end_tag = '</a>',
-            start_logout_tag = "<a href='{url}'>".format(url = reverse('logout'))
-        )
-        % >
-        $('#class_enroll_form').on('ajax:complete', function (event, xhr) {
-            if (xhr.status == 200) {
-                location.href = "${reverse('dashboard')}";
-            } else if (xhr.status == 403) {
-                location.href = "${reverse('course-specific-register', args=[course.id.to_deprecated_string()])}?course_id=${course.id | u}&enrollment_action=enroll";
-            } else if (xhr.status == 400) { //This means the user did not have permission
-                $('#register_error').html("${perms_error}").css("display", "block");
-            } else {
-                $('#register_error').html(
-                    (xhr.responseText ? xhr.responseText : "${_("
-                An
-                error
-                occurred.Please
-                try
-                again
-                later.
-                ")}"
-            )
-            ).
-                css("display", "block");
-            }
-        });
+                        'You may need to {start_logout_tag}log out{end_tag} then try the enroll button again. '
+                        'Please visit the {start_help_tag}help page{end_tag} for a possible solution.').format(
+                        start_help_tag = "<a href='{url}'>".format(url = marketing_link('FAQ')), end_tag = '</a>',
+                        start_logout_tag = "<a href='{url}'>".format(url = reverse('logout'))
+                        )
+    %>
+    $('#class_enroll_form').on('ajax:complete', function (event, xhr) {
+    if(xhr.status == 200) {
+        location.href = "${reverse('dashboard')}";
+    } else if (xhr.status == 403) {
+        location.href = "${reverse('course-specific-register', args=[course.id.to_deprecated_string()])}?course_id=${course.id | u}&enrollment_action=enroll";
+    } else if (xhr.status == 400) { //This means the user did not have permission
+        $('#register_error').html("${perms_error}").css("display", "block");
+    } else {
+        $('#register_error').html(
+            (xhr.responseText ? xhr.responseText : "${_("An error occurred.Please try again later.")}")
+        ).css("display", "block");
+    }
+    });
 
-        %else:
+    %else:
 
-        $('#class_enroll_form').on('ajax:complete', function (event, xhr) {
-            if (xhr.status == 200) {
-                if (xhr.responseText == "") {
-                    location.href = "${reverse('dashboard')}";
-                }
-                else {
-                    location.href = xhr.responseText;
-                }
-            } else if (xhr.status == 403) {
-                location.href = "${reverse('register_user')}?course_id=${course.id | u}&enrollment_action=enroll";
-            } else {
-                $('#register_error').html(
-                    (xhr.responseText ? xhr.responseText : "${_("
-                An
-                error
-                occurred.Please
-                try
-                again
-                later.
-                ")}"
-            )
-            ).
-                css("display", "block");
-            }
-        });
+    $('#class_enroll_form').on('ajax:complete', function (event, xhr) {
+    if(xhr.status == 200) {
+        if (xhr.responseText == "") {
+        location.href = "${reverse('dashboard')}";
+        }
+        else {
+          location.href = xhr.responseText;
+        }
+      } else if (xhr.status == 403) {
+          location.href = "${reverse('register_user')}?course_id=${course.id | u}&enrollment_action=enroll";
+      } else {
+        $('#register_error').html(
+            (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.")}")
+        ).css("display", "block");
+      }
+    });
 
-        %
-        endif
+    %endif
 
-    })(this)
-</script>
+  })(this)
+  </script>
 
 <script src="${static.url('js/course_info.js')}"></script>
 </%block>
@@ -210,27 +168,26 @@ from openedx.core.lib.courses import course_image_url
                         <span class="register disabled btn btn-xl btn-dark">
                     ${_("Course is full")}
                   </span>
-                        % elif invitation_only and not can_enroll:
-                        <span class="register disabled btn btn-xl btn-dark">${_("Enrollment in this course is by invitation only")}</span>
-                        ## Shib courses need the enrollment button to be displayed even when can_enroll is False,
-                        ## because AnonymousUsers cause can_enroll for shib courses to be False, but we need them to be
-                        able to click
-                        ## so that they can register and become a real user that can enroll.
-                        % elif not is_shib_course and not can_enroll:
-                        <span class="register disabled btn btn-xl btn-dark">${_("Enrollment is Closed")}</span>
-                        %elif can_add_course_to_cart:
-                        <%
-                        if user.is_authenticated():
-                        reg_href = "#"
-                        reg_element_id = "add_to_cart_post"
-                        else:
-                        reg_href = reg_then_add_to_cart_link
-                        reg_element_id = "reg_then_add_to_cart"
-                        %>
-                        <% if ecommerce_checkout:
-                        reg_href = ecommerce_checkout_link
-                        reg_element_id = ""
-                        %>
+            % elif invitation_only and not can_enroll:
+            <span class="register disabled btn btn-xl btn-dark">${_("Enrollment in this course is by invitation only")}</span>
+            ## Shib courses need the enrollment button to be displayed even when can_enroll is False,
+            ## because AnonymousUsers cause can_enroll for shib courses to be False, but we need them to be able to click
+            ## so that they can register and become a real user that can enroll.
+            % elif not is_shib_course and not can_enroll:
+            <span class="register disabled btn btn-xl btn-dark">${_("Enrollment is Closed")}</span>
+            %elif can_add_course_to_cart:
+            <%
+            if user.is_authenticated():
+            reg_href = "#"
+            reg_element_id = "add_to_cart_post"
+            else:
+            reg_href = reg_then_add_to_cart_link
+            reg_element_id = "reg_then_add_to_cart"
+            %>
+            <% if ecommerce_checkout:
+            reg_href = ecommerce_checkout_link
+            reg_element_id = ""
+            %>
                         <a href="${reg_href}" class="add-to-cart btn btn-xl" id="${reg_element_id}">
                             ${_("Add {course_name} to Cart <span>({price} USD)</span>")\
                             .format(course_name=course.display_number_with_default, price=course_price)}
@@ -249,8 +206,7 @@ from openedx.core.lib.courses import course_image_url
                         %>
                         <a href="${reg_href}" class="${href_class} btn btn-xl">
                             ${_("Enroll")}
-                            ## ${_("Enroll in {course_name}").format(course_name=course.display_number_with_default) |
-                            h}
+              ##                    ${_("Enroll in {course_name}").format(course_name=course.display_number_with_default) | h}
                         </a>
                         <div id="register_error"></div>
                         %endif
@@ -290,8 +246,7 @@ from openedx.core.lib.courses import course_image_url
                                 <%
                                 course_date_string = course_start_date.strftime('%Y-%m-%dT%H:%M:%S%z')
                                 %>
-                                <span class="important-dates-item-text start-date localized_datetime"
-                                      data-format="shortDate" data-datetime="${course_date_string}"></span>
+                      <span class="important-dates-item-text start-date localized_datetime" data-format="shortDate" data-datetime="${course_date_string}"></span>
                                 % endif
                             </li>
                             % endif
@@ -311,8 +266,7 @@ from openedx.core.lib.courses import course_image_url
                                 <%
                                 course_date_string = course_end_date.strftime('%Y-%m-%dT%H:%M:%S%z')
                                 %>
-                                <span class="important-dates-item-text final-date localized_datetime"
-                                      data-format="shortDate" data-datetime="${course_date_string}"></span>
+                        <span class="important-dates-item-text final-date localized_datetime" data-format="shortDate" data-datetime="${course_date_string}"></span>
                                 % endif
                             </li>
                             % endif
@@ -331,11 +285,7 @@ from openedx.core.lib.courses import course_image_url
                                 <span class="important-dates-item-text course-number">${course.display_number_with_default | h}</span>
                             </li>
 
-                            ##
-                            <li class="important-dates-item"><span class="icon fa fa-clock-o" aria-hidden="true"></span>
-                                <p class="important-dates-item-title">${_('Course Length')}</p><span
-                                        class="important-dates-item-text course-length">${_('{number} weeks').format(number=15)}</span>
-                            </li>
+              ##<li class="important-dates-item"><span class="icon fa fa-clock-o" aria-hidden="true"></span><p class="important-dates-item-title">${_('Course Length')}</p><span class="important-dates-item-text course-length">${_('{number} weeks').format(number=15)}</span></li>
 
                             %if course_price and (can_add_course_to_cart or is_cosmetic_price_enabled):
                             <li class="important-dates-item">
@@ -398,5 +348,5 @@ from openedx.core.lib.courses import course_image_url
 <%include file="../video_modal.html" />
 
 <%static:require_module_async module_name="js/dateutil_factory" class_name="DateUtilFactory">
-DateUtilFactory.transform(iterationKey=".localized_datetime");
+    DateUtilFactory.transform(iterationKey=".localized_datetime");
 </%static:require_module_async>
