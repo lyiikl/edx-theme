@@ -5,6 +5,7 @@ $mid-dray: #777;
 $mid-gray2: #737373;
 $gray: #808080;
 $base-color: $dark-cyan;
+$base-lightest: lighten($base-color, 62%); //#edfffe
 $link-color: $base-color;
 $text-color: $mid-dray;
 $footer-bg: $light-gray;
@@ -1583,6 +1584,13 @@ label {
     .section-content {
         padding-top: 50px;
     }
+    .errorlist {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: #ee163b;
+        font-weight: bold;
+    }
 }
 
 /*-----FAQ-----*/
@@ -1937,6 +1945,62 @@ body {
     .home {
         padding: 20px;
     }
+    .open-response-assessment-block {
+        .ora-summary-title {
+        color: $base-color;
+        }
+    }    
+    .discussion {
+        a {
+            color: $base-color;
+        }
+        .post-label {
+            &.post-label-following {
+                color: $base-color;
+            }
+        }
+        &.inline-discussion {
+            .inline-thread {
+                .forum-nav-bar {
+                    .all-posts-btn {
+                        color: $base-color;
+                    }
+                }
+            }
+            .new-post-article {
+                .add-post-cancel {
+                    color: $base-color;
+                }
+            }
+        }
+        .action-button{
+            &.action-follow {
+                &.is-checked {
+                    .action-icon {
+                        background-color: $base-color;
+                        border-color: $base-color;
+                    }
+                }
+                &:hover,
+                &:focus {
+                    border-color: $base-color;
+                    .action-icon {
+                        background-color: $base-color;
+                        border-color: $base-color;
+                    }
+                }
+                .action-label {
+                    color: $base-color;
+                }
+            }
+        }
+    }
+}
+
+.field-label {
+    .field-input:checked + .field-input-label {
+        color: $base-color;
+    }
 }
 
 .wiki-wrapper {
@@ -1982,17 +2046,52 @@ body {
                 }
             }
         }
+        .btn {
+            &.btn-primary {
+                box-shadow: none;
+                text-shadow: none;
+                background: $base-color;
+                border-color: $base-color;
+                &:hover {
+                    &:not(:disabled) {
+                        color: #fff;
+                        background: #009298;
+                        border-color: #00888e;
+                        box-shadow: none;
+                    }
+                }
+                &:active {
+                    &:not(:disabled) {
+                        background: #009298;
+                        border-color: #00888e;
+                        -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+                        box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+                    }
+                }
+                &:focus {
+                    &:not(:disabled) {
+                        background: #009298;
+                        border-color: #00494b;
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+        #hint_id_content {
+            position: static;
+        }
     }
+}
 
-    .course-outline {
-        .block-tree {
-            .section {
-                ol.outline-item {
-                    .subsection {
-                        a.outline-item {
-                            &:hover, &:focus {
-                                background-color: lighten($base-color, 60%);
-                            }
+.course-outline {
+    .block-tree {
+        .section {
+            ol.outline-item {
+                .subsection {
+                    a.outline-item {
+                        &:hover,
+                        &:focus {
+                            background: $base-lightest;
                         }
                     }
                 }
@@ -2036,10 +2135,6 @@ body {
             }
         }
     }
-}
-
-.open-response-assessment-block .ora-summary-title {
-    color: $base-color;
 }
 
 .instructor-dashboard-wrapper-2  {
@@ -2091,12 +2186,6 @@ body {
     input[type="button"] {
         @extend .btn;
     }
-}
-
-.field-label {
-    .field-input:checked + .field-input-label {
-        color: $base-color;
-    }
 
 }
 
@@ -2119,8 +2208,9 @@ body {
          }
 
         .btn-brand {
-            color: $base-color;
+            color: #fff;
             border-color: $base-color;
+            background: $base-color;
             &:hover,
             &:active,
             &:focus {
@@ -2203,6 +2293,52 @@ body {
     }
 }
 
+.forum-nav-sort {
+    width: 50%;
+}
+
+.bookmarks-results-list {
+    .bookmarks-results-list-item {
+        &:hover {
+            border-color: $base-color;
+            .list-item-breadcrumbtrail {
+                color: $base-color;
+            }
+        }
+        &:before {
+            color: $base-color;
+        }
+    }
+}
+
+.account-settings-sections {
+    .section {
+        .account-settings-section-body {
+            .u-field {
+                .field {
+                    .u-field-link {
+                        color: $base-color;
+                        [disabled] & {
+                            border-color: transparent;
+                        }
+                    }
+                    select {
+                        ~ .icon-caret-down {
+                            &:after {
+                                border-top-color: $base-color;;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.CodeMirror-scroll {
+    margin-right: 0;
+}
+
 /*-----Bootstrap-----*/
 
 table {
@@ -2226,6 +2362,53 @@ table {
     a {
         &.active-section {
             color: #009298;
+        }
+    }
+    table {
+        &.stat_table {
+            font-family: $base-font;
+        }
+    }
+}
+
+/*-----Profile-----*/
+.view-profile {
+    .wrapper-profile-sections {
+        .wrapper-profile-section-one {
+            width: 100%;
+            display: inline-block;
+        }
+        &>.is-hidden {
+            display: none;
+        }
+    }
+    .profile-section-one-fields {
+        .u-field-message {
+            width: auto;
+            padding: 0;
+            margin: 4px 7px 0;
+            text-align: center;
+        }
+        select {
+            height: 25px;
+        }
+    }
+}
+
+.u-field {
+    &.editable-toggle {
+        &.mode-display {
+            &:hover {
+                background: $base-lightest;
+            }
+        }
+    }
+}
+
+.u-field-dropdown {
+    button {
+        &.u-field-value-display {
+            color: $mid-dray;
         }
     }
 }
@@ -2379,6 +2562,8 @@ table {
                     }
                     &:after {
                         content: '›';
+                        margin-right: ($baseline/2);
+                        margin-left: 0;
                     }
                 }
             }
@@ -2395,15 +2580,13 @@ table {
             }
         }
     }
-}
+
 
 .footer-nav {
     padding-right: 0px!important;
 }
 
-.course-content{
-    width: 10%!important;
-}
+
 
 p.footer-title {
     font-size: 18px;
@@ -2421,12 +2604,19 @@ div article .date{
 .empty-dashboard-message a:hover {
     background-color: #00b0a2;
     border: 1px solid #00b0a2;
+    color: white!important;
 }
-
+.form-horizontal {
+        .control-label {
+            text-align: right;
+        }
+}
 i.pe-7s-date {
     margin-right: 0px!important;
 }
-
+.course-content{
+    width: 10%!important;
+}
 #course-info-progress {
     width: 100%!important;
 }
@@ -2451,3 +2641,12 @@ i.pe-7s-date {
     margin-bottom: 0;
     padding-right: 20px!important;
 }
+.profile-wrapper {
+        .course-info {
+            .grade-detail-graph {
+                width: 773px;
+            }
+        }
+}
+}
+
