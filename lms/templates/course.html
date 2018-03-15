@@ -20,7 +20,8 @@ from django.conf import settings
         <span class="course-code">${course.display_number_with_default}</span>
         <span class="course-title">${course.display_name_with_default}</span>
       </h2>
-      <%if course.start is not None:
+      <%
+      if course.start is not None:
           course_date_string = course.start.strftime('%Y-%m-%dT%H:%M:%S%z')
           if request.LANGUAGE_CODE == 'ar':
               month = settings.ARABIC_MONTHS[course.start.month]
@@ -29,7 +30,9 @@ from django.conf import settings
               course_date_string_format = course.start.strftime('%d %b. %Y')
       else:
           course_date_string = ''
-         if course.end is not None:
+
+
+if course.end is not None:
           if request.LANGUAGE_CODE == 'ar':
               month = settings.ARABIC_MONTHS[course.end.month]
               course_end_date_string_format = course.end.strftime('%d {}. %Y').format(month)
@@ -37,6 +40,7 @@ from django.conf import settings
               course_end_date_string_format = course.end.strftime('%d %b. %Y')
       else:
           course_end_date_string_format = ''
+
       %>
       % if course.advertised_start is not None:
           <div class="course-date" aria-hidden="true">${_("Starts")}: ${course.advertised_start}</div>
@@ -48,8 +52,9 @@ from django.conf import settings
           </div>
           <div class="course-date">
             <i class="pe-7s-timer font-26 vertical-align-middle text-theme-colored2 mr-10"></i>  
-        ${course_end_date_string_format}
-        </div>
+
+${course_end_date_string_format}
+          </div>
           <div style="display:none" class="course-date localized_datetime" aria-hidden="true" data-format="shortDate" data-datetime="${course_date_string}" data-string="${_("Starts: {date}")}"></div>
       % endif
     </div>
