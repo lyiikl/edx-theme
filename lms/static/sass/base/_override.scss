@@ -2535,7 +2535,8 @@ table {
     }
     .navbar {
         &-nav {
-            float: left;
+            float: right;
+            padding-right: 20px;
              @media (max-width: 1000px) {
                 float: none;
             }
