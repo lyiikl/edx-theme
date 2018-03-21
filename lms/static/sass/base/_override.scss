@@ -2633,23 +2633,26 @@ i.pe-7s-date {
     padding-left: 0em!important;
 }
 
-.empty-dashboard-message a:hover {
-    color: white!important;
-}
+    .empty-dashboard-message a:hover {
+        color: white!important;
+    }
 
-.account-activation.info.aa-icon .message-copy:before {
-    left: 0em !important;
-}
-.account-activation.info .message-title {
-    margin-bottom: 0;
-    padding-right: 20px!important;
-}
-.profile-wrapper {
+    .account-activation.info.aa-icon .message-copy:before {
+        left: 0em !important;
+    }
+    .account-activation.info .message-title {
+        margin-bottom: 0;
+        padding-right: 20px!important;
+    }
+    .profile-wrapper {
         .course-info {
             .grade-detail-graph {
                 width: 773px;
             }
         }
-}
+    }
+    .forum-search .search-input {
+        width: 16rem !important;
+    }
 }
 
