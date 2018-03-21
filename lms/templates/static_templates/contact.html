@@ -22,51 +22,53 @@ from django.core.urlresolvers import reverse
             <div class="section-content">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-7">
-                            <form id="contact_form" name="contact_form" class="" action="${reverse('contact_form')}" method="post">
-                                <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-field">
-                                            <label>الاسم <small>*</small></label>
-                                            <input name="name" class="input-block" type="text" placeholder="الاسم بالكامل">
-                                            ${unicode(form['name'].errors) | n}
+                        <div class="col-md-10 col-md-push-1">
+                            <div class="col-md-9">
+                                <form id="contact_form" name="contact_form" class="" action="${reverse('contact_form')}" method="post">
+                                    <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-field">
+                                                <label>الاسم <small>*</small></label>
+                                                <input name="name" class="input-block" type="text" placeholder="الاسم بالكامل">
+                                                ${unicode(form['name'].errors) | n}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-field">
+                                                <label>البريد الإلكتروني <small>*</small></label>
+                                                <input name="email" class="input-block email" type="email" placeholder="البريد الإلكتروني">
+                                                ${unicode(form['email'].errors) | n}
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-field">
-                                            <label>البريد الإلكتروني <small>*</small></label>
-                                            <input name="email" class="input-block email" type="email" placeholder="البريد الإلكتروني">
-                                            ${unicode(form['email'].errors) | n}
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-field">
+                                                <label>الاستفسار <small>*</small></label>
+                                                <input name="subject" class="input-block" type="text" placeholder=" عنوان الاستفسار">
+                                                ${unicode(form['subject'].errors) | n}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-field">
+                                                <label>الهاتف</label>
+                                                <input name="phone" class="input-block" type="number" placeholder=" رقم الهاتف">
+                                                ${unicode(form['phone'].errors) | n}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-field">
-                                            <label>الاستفسار <small>*</small></label>
-                                            <input name="subject" class="input-block" type="text" placeholder=" عنوان الاستفسار">
-                                            ${unicode(form['subject'].errors) | n}
-                                        </div>
+                                    <div class="form-field">
+                                        <label>الوصف</label>
+                                        <textarea name="message" class="input-block" rows="5" placeholder="الرجاء كتابة الوصف هنا"></textarea>
+                                        ${unicode(form['message'].errors) | n}
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-field">
-                                            <label>الهاتف</label>
-                                            <input name="phone" class="input-block" type="number" placeholder=" رقم الهاتف">
-                                            ${unicode(form['phone'].errors) | n}
-                                        </div>
+                                    <div class="form-field">
+                                        <input name="form_botcheck" class="form-control" type="hidden" value="" />
+                                        <button type="submit" class="btn btn-dark btn-flat" data-loading-text="الرجاء الانتظار">إرسال الرسالة</button>
                                     </div>
-                                </div>
-                                <div class="form-field">
-                                    <label>الوصف</label>
-                                    <textarea name="message" class="input-block" rows="5" placeholder="الرجاء كتابة الوصف هنا"></textarea>
-                                    ${unicode(form['message'].errors) | n}
-                                </div>
-                                <div class="form-field">
-                                    <input name="form_botcheck" class="form-control" type="hidden" value="" />
-                                    <button type="submit" class="btn btn-dark btn-flat" data-loading-text="الرجاء الانتظار">إرسال الرسالة</button>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
