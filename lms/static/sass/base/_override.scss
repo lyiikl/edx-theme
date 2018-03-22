@@ -2585,53 +2585,53 @@ table {
     }
 
 
-.footer-nav {
-    padding-right: 0px!important;
-}
+    .footer-nav {
+        padding-right: 0px!important;
+    }
 
 
 
-p.footer-title {
-    font-size: 18px;
-    color: #00b0a2;
-}
+    p.footer-title {
+        font-size: 18px;
+        color: #00b0a2;
+    }
 
-div article .date{
-    padding-left: 20px;
-}
+    div article .date{
+        padding-left: 20px;
+    }
 
-.empty-dashboard-message a{
-    background-color: #00b0a2;
-    border: 1px solid #00b0a2;
-}
-.empty-dashboard-message a:hover {
-    background-color: #00b0a2;
-    border: 1px solid #00b0a2;
-    color: white!important;
-}
-.form-horizontal {
-        .control-label {
-            text-align: right;
-        }
-}
-i.pe-7s-date {
-    margin-right: 0px!important;
-}
-.course-content{
-    width: 10%!important;
-}
-#course-info-progress {
-    width: 100%!important;
-}
+    .empty-dashboard-message a{
+        background-color: #00b0a2;
+        border: 1px solid #00b0a2;
+    }
+    .empty-dashboard-message a:hover {
+        background-color: #00b0a2;
+        border: 1px solid #00b0a2;
+        color: white!important;
+    }
+    .form-horizontal {
+            .control-label {
+                text-align: right;
+            }
+    }
+    i.pe-7s-date {
+        margin-right: 0px!important;
+    }
+    .course-content{
+        width: 10%!important;
+    }
+    #course-info-progress {
+        width: 100%!important;
+    }
 
-.important-dates-item-title {
-    padding-right: 5px;
-    padding-left: 5px;
-}
+    .important-dates-item-title {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
 
-.account-activation .message-copy {
-    padding-left: 0em!important;
-}
+    .account-activation .message-copy {
+        padding-left: 0em!important;
+    }
 
     .empty-dashboard-message a:hover {
         color: white!important;
@@ -2652,7 +2652,11 @@ i.pe-7s-date {
         }
     }
     .forum-search .search-input {
-        width: 16rem !important;
+        width: 15rem !important;
+    }
+
+    course-content.discussion-module.discussion-user-threads{
+        width: 100%!important;
     }
 }
 
