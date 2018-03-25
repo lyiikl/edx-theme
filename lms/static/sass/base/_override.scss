@@ -2658,6 +2658,12 @@ table {
     course-content.discussion-module.discussion-user-threads{
         width: 100%!important;
     }
+
+    // override the width 10% in discussion page
+    .course-content.discussion-module.discussion-user-threads {
+        width: 100% !important;
+    }
+    //.discussion.inline-discussion .inline-threads
 }
 
 #my-courses {
