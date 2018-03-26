@@ -2654,12 +2654,20 @@ table {
     .forum-search .search-input {
         width: 15rem !important;
     }
-    
+
     // override the width 10% in discussion page
     .course-content.discussion-module.discussion-user-threads {
         width: 100% !important;
     }
     //.discussion.inline-discussion .inline-threads
+
+    // Hide accounts and orders tabs
+    button#accounts-tab {
+        visibility: hidden;
+    }
+    button#orders-tab {
+        visibility: hidden;
+    }
 }
 
 #my-courses {
