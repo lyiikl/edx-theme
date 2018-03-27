@@ -2668,6 +2668,11 @@ table {
     button#orders-tab {
         visibility: hidden;
     }
+
+    // flip the play button
+    .play-intro {
+        transform: scale(-1, 1) translate(-50%, -50%);
+    }
 }
 
 #my-courses {
