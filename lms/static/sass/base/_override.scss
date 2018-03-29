@@ -2869,6 +2869,11 @@ table {
     .play-intro {
         transform: scale(-1, 1) translate(-50%, -50%);
     }
+
+    // flip the span icon in bookmarks page
+    span.icon.fa.fa-caret-right {
+        transform: scale(-1, 1);
+    }
 }
 
 #my-courses {
